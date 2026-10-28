@@ -7,7 +7,6 @@ const PARTES = [
   { titulo: 'Constelação e integração', pessoa: 'Germano Jorge' },
   { titulo: 'Consultas OLAP',           pessoa: 'Matheus Rodrigues' },
 ];
-const TEMA = document.body.dataset.tema;
 
 /* ===========================================================
    CROMO DOS SLIDES: rótulo da parte e nº da página
@@ -25,25 +24,10 @@ slides.forEach((s, i) => {
   s.prepend(cromo);
   const deco = document.createElement('div');
   deco.className = 'deco';
-  if (TEMA === 'territorio') deco.innerHTML = curvasDeNivel(i);
   s.prepend(deco);
 });
 const capaNomes = document.getElementById('capaNomes');
 if (capaNomes) capaNomes.textContent = PARTES.map(p => p.pessoa).join('  ·  ');
-
-/* curvas de nível procedurais (tema território); cada slide tem uma fase diferente */
-function curvasDeNivel(seed) {
-  let t = '';
-  for (let k = 0; k < 15; k++) {
-    let d = '';
-    for (let x = 0; x <= 1920; x += 40) {
-      const y = 50 + k * 72 + Math.sin(x / 230 + k * .7 + seed) * 28 + Math.sin(x / 97 + k + seed * 2) * 9;
-      d += (x ? 'L' : 'M') + x + ',' + y.toFixed(1);
-    }
-    t += `<path d="${d}"/>`;
-  }
-  return `<svg viewBox="0 0 1920 1080" preserveAspectRatio="none">${t}</svg>`;
-}
 
 /* ===========================================================
    CONSULTA 1 (roll-up): células de mês, trimestre e ano

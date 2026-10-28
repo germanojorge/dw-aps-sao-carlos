@@ -1,16 +1,14 @@
 """
-Gera as duas versões da apresentação (mesmo conteúdo, estilos diferentes):
+Gera a apresentação no estilo "boletim cobalto":
     ../apresentacao_cobalto.html     (papel creme quadriculado + azul-cobalto)
-    ../apresentacao_territorio.html  (fundo escuro com curvas de nível + menta/âmbar)
 
 Uso (de dentro de apresentacao/gerador/):
     python build.py
 
 Arquivos de entrada:
     slides.html          conteúdo dos slides (texto, ordem, notas do apresentador em data-notes)
-    base.css             componentes comuns aos dois estilos
+    base.css             componentes dos slides
     tema_cobalto.css     cores, fontes e decoração do estilo "boletim cobalto"
-    tema_territorio.css  cores, fontes e decoração do estilo "território"
     deck.js              navegação, escala 16:9, notas (tecla N) e edição inline (tecla E)
     icones/*.svg         ícones Lucide (licença ISC)
     dados/               contorno de São Carlos (API de malhas do IBGE) e UBS (API de Dados Abertos do CNES)
@@ -207,8 +205,6 @@ def expandir(html):
 TEMAS = {
     "cobalto": ("Boletim cobalto",
                 "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"),
-    "territorio": ("Território",
-                   "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap"),
 }
 
 base_vp = (AQUI / "viewport-base.css").read_text()

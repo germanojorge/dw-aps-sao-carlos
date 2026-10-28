@@ -64,8 +64,8 @@ esquemas/fontes gen.py (Graphviz) + .dot/.svg: regenerar os diagramas com `pytho
 relatorio/      entrega atual: .docx editável com o template do ICMC + PDF gerado dele
                 (trabalho1_versao_antiga_sem_template.pdf = 1ª versão, só para referência)
 relatorio/gerador  scripts que geram o .docx (veja abaixo)
-apresentacao/   slides em HTML (20 min, 4 partes): apresentacao_cobalto.html e apresentacao_territorio.html
-apresentacao/gerador  build.py junta slides.html + base.css + tema_*.css + deck.js; `python build.py` regenera os dois
+apresentacao/   slides em HTML (20 min, 4 partes), estilo "boletim cobalto": apresentacao_cobalto.html (+ .pptx)
+apresentacao/gerador  build.py junta slides.html + base.css + tema_*.css + deck.js; `python build.py` regenera o HTML
                       gerar_pptx.py → apresentacao_cobalto.pptx: fundo de cada slide sem texto (captura do HTML) + caixas de
                       texto nativas na posição/fonte do HTML (pptx_captura.js mede, gerar_pptx.js monta com pptxgenjs) + notas
 ```
@@ -111,4 +111,4 @@ Pendências antes da entrega:
 - [ ] Capa: nomes e nº USP dos integrantes (marcados com `[Nome]`/`[Nº USP]` no `gerar.js`).
 - [ ] Confirmar se a **notação dos diagramas** (estilo Kimball) é a da aula; se não for, refazer em `esquemas/fontes/gen.py`.
 - [x] Relatório atualizado (28/10/2026): resultados reais e captura do notebook em cada consulta, carga e validação na Seção 1.5, achado do SISAB na 1.6. As edições manuais da capa (título "Atenção Primária a Saúde", data 29/10/2026, sem a linha "Curso") foram levadas para o `gerar.js`.
-- [ ] Apresentação: escolher um dos dois estilos. Nomes já em `PARTES` (`apresentacao/gerador/deck.js`): Ivan Medina, Vinícius Morotti, Germano Jorge, Matheus Rodrigues; por decisão do grupo, os nomes aparecem só na capa. Notas do apresentador: tecla N.
+- [x] Apresentação: estilo escolhido = cobalto (o território foi removido em 28/10/2026; está no histórico do git). Nomes já em `PARTES` (`apresentacao/gerador/deck.js`): Ivan Medina, Vinícius Morotti, Germano Jorge, Matheus Rodrigues; por decisão do grupo, os nomes aparecem só na capa. Notas do apresentador: tecla N.

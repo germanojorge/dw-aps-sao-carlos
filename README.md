@@ -38,7 +38,7 @@ em `apresentacao/gerador/` (precisa de chromium, ImageMagick, node e `npm instal
 | `notebook/` | ETL completo (PySUS → DuckDB) e as 5 consultas OLAP. Os dados de São Carlos já filtrados estão em `notebook/dados/staging/`, então o notebook roda sem baixar nada. |
 | `esquemas/` | Diagramas das estrelas e da constelação, e a especificação das dimensões |
 | `relatorio/` | Relatório em .docx/PDF (template do ICMC) e versão em LaTeX; geradores em `relatorio/gerador/` |
-| `apresentacao/` | Slides em HTML nos dois estilos; gerador em `apresentacao/gerador/` |
+| `apresentacao/` | Slides em HTML (estilo cobalto) e a versão .pptx; gerador em `apresentacao/gerador/` |
 
 ## Consultar o DW sem rodar nada
 
