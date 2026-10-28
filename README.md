@@ -39,6 +39,7 @@ em `apresentacao/gerador/` (precisa de chromium, ImageMagick, node e `npm instal
 | `esquemas/` | Diagramas das estrelas e da constelação, e a especificação das dimensões |
 | `relatorio/` | Relatório em .docx/PDF (template do ICMC) e versão em LaTeX; geradores em `relatorio/gerador/` |
 | `apresentacao/` | Slides em HTML (estilo cobalto) e a versão .pptx; gerador em `apresentacao/gerador/` |
+| `apresentacao/roteiros/` | Roteiro de cada apresentador (partes 1 a 4): explicação de cada slide e uma fala de exemplo, em .md e .docx |
 
 ## Consultar o DW sem rodar nada
 
