@@ -20,6 +20,17 @@ Todo o texto dos slides está em um arquivo só: [`apresentacao/gerador/slides.h
 Dicas: se duas pessoas forem mexer ao mesmo tempo, combinem quem fica com qual parte (cada parte é um bloco de slides).
 O modo de edição dentro da apresentação (tecla **E**) só salva no seu computador: para valer para todos, edite pelo GitHub.
 
+## Versão em PowerPoint
+
+[`apresentacao/apresentacao_cobalto.pptx`](apresentacao/apresentacao_cobalto.pptx) (também na página dos slides): estilo cobalto,
+com os textos editáveis e as notas do apresentador. Abre no PowerPoint e no Google Slides (Arquivo → Importar slides).
+Formas, ícones, diagramas e gráficos são imagens de fundo; ao mudar um texto, confira se ele ainda cabe na caixa desenhada atrás.
+No PowerPoint, instale as fontes gratuitas Newsreader, Hanken Grotesk e DM Mono (Google Fonts); o Google Slides já as tem.
+
+O .pptx é gerado a partir do HTML: depois de mudar o `slides.html`, rode `python build.py && python gerar_pptx.py`
+em `apresentacao/gerador/` (precisa de chromium, ImageMagick, node e `npm install pptxgenjs`). Edições feitas direto no
+.pptx não voltam para o HTML.
+
 ## Estrutura
 
 | Pasta | O que tem |

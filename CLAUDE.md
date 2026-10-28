@@ -66,6 +66,8 @@ relatorio/      entrega atual: .docx editável com o template do ICMC + PDF gera
 relatorio/gerador  scripts que geram o .docx (veja abaixo)
 apresentacao/   slides em HTML (20 min, 4 partes): apresentacao_cobalto.html e apresentacao_territorio.html
 apresentacao/gerador  build.py junta slides.html + base.css + tema_*.css + deck.js; `python build.py` regenera os dois
+                      gerar_pptx.py → apresentacao_cobalto.pptx: fundo de cada slide sem texto (captura do HTML) + caixas de
+                      texto nativas na posição/fonte do HTML (pptx_captura.js mede, gerar_pptx.js monta com pptxgenjs) + notas
 ```
 
 Repositório público: https://github.com/germanojorge/dw-aps-sao-carlos (branch `main`). A cada push que mexe em `apresentacao/`,

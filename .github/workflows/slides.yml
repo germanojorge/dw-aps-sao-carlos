@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p _site
           cp apresentacao/site/index.html _site/
-          cp apresentacao/apresentacao_cobalto.html apresentacao/apresentacao_territorio.html _site/
+          cp apresentacao/apresentacao_cobalto.html apresentacao/apresentacao_territorio.html apresentacao/apresentacao_cobalto.pptx _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
