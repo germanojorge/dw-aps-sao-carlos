@@ -1,0 +1,317 @@
+<!-- =====================================================================
+     CONTEÚDO DOS SLIDES (compartilhado pelos dois estilos)
+     data-part  = parte da apresentação (1 a 4) → define o rótulo do topo
+     data-notes = roteiro do apresentador (tecla N mostra na tela)
+     .rv + style="--d:N" = elemento que entra animado, N = ordem
+     Nomes dos integrantes (só na capa): edite PARTES no início de deck.js
+     ===================================================================== -->
+
+<!-- ============================ PARTE 1 · PROBLEMA E FONTES ============================ -->
+
+<!-- 01 · CAPA -->
+<section class="slide s-capa" data-part="1" data-notes="Apresentar o grupo e o tema em uma frase: um data warehouse que junta oferta de equipes, atendimentos e internações evitáveis em São Carlos. O contorno do mapa é o município oficial (IBGE); os pontos são as UBS e USF do CNES.">
+  {{GLITCH}}
+  <div class="capa-txt">
+    <div class="kicker rv" style="--d:1">SCC0245 · Trabalho Prático 1</div>
+    <h1 class="h-xl rv" style="--d:2">Atenção primária<br>à saúde em<br><em>São Carlos</em></h1>
+    <p class="lede rv" style="--d:3">Um data warehouse para ligar equipes, atendimentos e internações evitáveis.</p>
+    <div class="chips rv" style="--d:4"><span class="chip"><b>3</b> fatos</span><span class="chip"><b>9</b> dimensões</span><span class="chip"><b>5</b> consultas OLAP</span></div>
+    <div class="byline rv" style="--d:5" id="capaNomes"></div>
+  </div>
+  <div class="capa-mapa rv" style="--d:3">{{MAPA}}</div>
+</section>
+
+<!-- 02 · ROTEIRO -->
+<section class="slide s-roteiro" data-part="1" data-notes="Mostrar o roteiro: quatro partes, cerca de cinco minutos cada. Dizer quem apresenta o quê.">
+  <h2 class="h-m rv" style="--d:1">Roteiro</h2>
+  <div class="roteiro" id="roteiro">
+    <div class="rt rv" style="--d:2"><span class="rt-n">01</span>{{ICON:map-pin}}<h3>Problema e fontes</h3></div>
+    <div class="rt rv" style="--d:3"><span class="rt-n">02</span>{{ICON:clipboard-list}}<h3>Processos e estrelas</h3></div>
+    <div class="rt rv" style="--d:4"><span class="rt-n">03</span>{{ICON:database}}<h3>Constelação e integração</h3></div>
+    <div class="rt rv" style="--d:5"><span class="rt-n">04</span>{{ICON:calendar}}<h3>Consultas OLAP</h3></div>
+  </div>
+  <div class="timebar rv" style="--d:6"><i></i><i></i><i></i><i></i><span>20 min</span></div>
+</section>
+
+<!-- 03 · PORTA DE ENTRADA -->
+<section class="slide s-fluxo" data-part="1" data-notes="A atenção básica (UBS e USF) é a porta de entrada do SUS e acompanha a população do território. Quando funciona, hipertensão, diabetes, asma e infecção urinária são controladas no posto. Quando falha, viram internação. Essas internações evitáveis são as ICSAP, com lista oficial na Portaria SAS/MS 221/2008, e são o indicador clássico de efetividade da atenção básica.">
+  <h2 class="h-m rv" style="--d:1">A porta de entrada do SUS</h2>
+  <div class="fluxo">
+    <div class="no rv" style="--d:2">{{ICON:house-plus}}<b>UBS / USF</b><span>acompanha o território</span></div>
+    <div class="seta ok rv" style="--d:3"><span>controla no posto</span></div>
+    <div class="no fim-ok rv" style="--d:3">{{ICON:user-round}}<b>Paciente estável</b><span>cuidado contínuo</span></div>
+  </div>
+  <div class="fluxo falha">
+    <div class="no fantasma"></div>
+    <div class="seta ruim rv" style="--d:5"><span>quando falha</span></div>
+    <div class="no destaque rv" style="--d:6">{{ICON:hospital}}<b>Internação evitável</b><span>ICSAP</span></div>
+  </div>
+  <div class="tags rv" style="--d:7"><span>hipertensão</span><span>diabetes</span><span>asma</span><span>pneumonia bacteriana</span><span>infecção urinária</span><span class="ref">Portaria SAS/MS 221/2008 · 19 grupos</span></div>
+</section>
+
+<!-- 04 · SÃO CARLOS NO MAPA -->
+<section class="slide s-mapa" data-part="1" data-notes="Recorte: município de São Carlos. População do Censo 2022 confirmada na API do IBGE: 254.857 habitantes. A API de Dados Abertos do Ministério da Saúde lista 36 estabelecimentos do tipo 02 (centro de saúde / unidade básica). Curiosidade: várias coordenadas da API coincidem, então a geolocalização da fonte é imprecisa. Por isso o DW usa bairro e código, não as coordenadas, para agregar.">
+  <div class="mapa-big rv" style="--d:1">{{MAPA}}</div>
+  <div class="mapa-zoomwrap rv" style="--d:3">{{MAPA_ZOOM}}<span class="cap">área urbana</span></div>
+  <div class="stats">
+    <div class="stat rv" style="--d:2"><span class="num" data-count="254857">254.857</span><span class="lbl">habitantes · Censo 2022</span></div>
+    <div class="stat rv" style="--d:4"><span class="num" data-count="36">36</span><span class="lbl">UBS / USF no CNES</span></div>
+    <div class="nota rv" style="--d:5">pontos = coordenadas da API do CNES; várias coincidem</div>
+  </div>
+</section>
+
+<!-- 05 · PERGUNTA CENTRAL -->
+<section class="slide s-pergunta" data-part="1" data-notes="Esta é a pergunta que orienta todo o modelo. Para respondê-la precisamos olhar a oferta (equipes), o uso (produção ambulatorial) e o resultado (internações evitáveis) na mesma linha do tempo. É isso que a constelação de fatos e o drill-across permitem.">
+  {{GLITCH}}
+  <div class="kicker rv" style="--d:1">Pergunta central</div>
+  <h2 class="h-l rv" style="--d:2">Mais atenção básica<br>significa <em>menos internações evitáveis?</em></h2>
+  <div class="trio">
+    <div class="tri rv" style="--d:3">{{ICON:users}}<b>Oferta</b><span>equipes ativas</span></div>
+    <div class="tri rv" style="--d:4">{{ICON:stethoscope}}<b>Uso</b><span>atendimentos</span></div>
+    <div class="tri rv" style="--d:5">{{ICON:bed-double}}<b>Resultado</b><span>ICSAP</span></div>
+  </div>
+</section>
+
+<!-- 06 · FONTES -->
+<section class="slide s-fontes" data-part="1" data-notes="Cinco fontes públicas e oficiais. Três principais do DATASUS: CNES (equipes e estabelecimentos), SIH (uma linha por internação, a AIH) e SIA (produção ambulatorial). Duas auxiliares: IBGE para nomes e regiões dos municípios e a API do CNES para nome, bairro e coordenadas. Baixamos com o PySUS; os arquivos são estaduais e mensais, então filtramos São Carlos. Período: 2023 e 2024, 24 competências.">
+  <h2 class="h-m rv" style="--d:1">Cinco fontes, um data warehouse</h2>
+  <div class="fontes">
+    <div class="fcol">
+      <div class="fonte big rv" style="--d:2">{{ICON:users}}<b>CNES</b><span>equipes e estabelecimentos</span></div>
+      <div class="fonte big rv" style="--d:3">{{ICON:bed-double}}<b>SIH-SUS</b><span>internações (AIH)</span></div>
+      <div class="fonte big rv" style="--d:4">{{ICON:stethoscope}}<b>SIA-SUS</b><span>produção ambulatorial</span></div>
+    </div>
+    <div class="fpipe rv" style="--d:5"><span>PySUS</span><span>filtro São Carlos</span><span>2023 – 2024</span></div>
+    <div class="fdw rv" style="--d:6">{{ICON:database}}<b>DW</b><span>DuckDB</span></div>
+    <div class="fcol aux">
+      <div class="fonte rv" style="--d:7">{{ICON:map-pin}}<b>IBGE</b><span>localidades</span></div>
+      <div class="fonte rv" style="--d:8">{{ICON:building-2}}<b>API CNES</b><span>nome · bairro · coordenadas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PARTE 2 · PROCESSOS E ESTRELAS ============================ -->
+
+<!-- 07 · ABERTURA PARTE 2 -->
+<section class="slide s-divisor" data-part="2" data-notes="Passagem para a parte 2: os três processos de negócio e as estrelas.">
+  {{GLITCH}}
+  <span class="div-n rv" style="--d:1">02</span>
+  <h2 class="h-l rv" style="--d:2">Três processos de negócio</h2>
+</section>
+
+<!-- 08 · DATA MARTS (notação de aula: Demanda / Foco / Perspectivas) -->
+<section class="slide s-marts" data-part="2" data-notes="Na notação vista em aula: cada data mart tem uma demanda, um foco (as medidas) e perspectivas (as dimensões). Oferta de equipes, internações e produção ambulatorial. Cada um vira uma tabela de fatos.">
+  <h2 class="h-m rv" style="--d:1">Focos de interesse</h2>
+  <div class="marts">
+    <div class="mart m1 rv" style="--d:2">
+      <p class="dem"><u>Demanda</u>: acompanhar a oferta de equipes</p>
+      <div class="box"><b>Data Mart 1</b><p>Foco: <em>nº de equipes</em></p><p>Perspectivas: estabelecimento · tipo de equipe · mês</p></div>
+    </div>
+    <div class="mart m2 rv" style="--d:3">
+      <p class="dem"><u>Demanda</u>: analisar internações</p>
+      <div class="box"><b>Data Mart 2</b><p>Foco: <em>internações · dias · valor</em></p><p>Perspectivas: diagnóstico · paciente · residência · hospital · procedimento · mês</p></div>
+    </div>
+    <div class="mart m3 rv" style="--d:4">
+      <p class="dem"><u>Demanda</u>: analisar atendimentos</p>
+      <div class="box"><b>Data Mart 3</b><p>Foco: <em>qtd e valor aprovados</em></p><p>Perspectivas: procedimento · profissional · paciente · residência · estabelecimento · mês</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · ESTRELA 1 -->
+<section class="slide s-estrela" data-part="2" data-notes="Estrela 1, oferta de equipes. Grão: uma equipe ativa em um estabelecimento em um mês, uma fotografia mensal. Não há medida numérica: é uma tabela de fatos sem fato, e o número de equipes sai da contagem de linhas. O id da equipe fica na própria tabela de fatos como dimensão degenerada.">
+  <div class="st-head rv" style="--d:1"><span class="st-n">Estrela 1 · CNES</span><h2 class="h-m">Oferta de equipes</h2></div>
+  <div class="st-svg rv" style="--d:2">{{ESTRELA:fato_equipe}}</div>
+  <div class="callouts">
+    <span class="co rv" style="--d:5">fato sem fato</span>
+    <span class="co rv" style="--d:6">grão: equipe ativa × mês</span>
+    <span class="co rv" style="--d:7">id_equipe = dimensão degenerada</span>
+  </div>
+</section>
+
+<!-- 10 · SEMIADITIVO -->
+<section class="slide s-semi" data-part="2" data-notes="Por que a contagem de equipes é semiaditiva: pode somar entre estabelecimentos e tipos, mas não ao longo do tempo. Se a mesma equipe existe em janeiro e em fevereiro, somar os meses conta duas vezes. Entre meses usamos a média ou o último mês. Os números do slide são só um exemplo.">
+  <h2 class="h-m rv" style="--d:1">Equipes não se somam no tempo</h2>
+  <div class="semi">
+    <div class="mes rv" style="--d:2"><span class="m-l">jan</span><div class="eqs">{{ICON:users}}{{ICON:users}}{{ICON:users}}</div><span class="m-c">3</span></div>
+    <div class="mais rv" style="--d:3">+</div>
+    <div class="mes rv" style="--d:3"><span class="m-l">fev</span><div class="eqs">{{ICON:users}}{{ICON:users}}{{ICON:users}}</div><span class="m-c">3</span></div>
+    <div class="res">
+      <div class="r bad rv" style="--d:5"><b>6</b><span>soma dos meses · conta a mesma equipe 2×</span></div>
+      <div class="r good rv" style="--d:6"><b>3</b><span>média ou último mês</span></div>
+    </div>
+  </div>
+  <div class="tags rv" style="--d:7"><span>soma entre estabelecimentos ✓</span><span>soma entre tipos ✓</span><span>soma entre meses ✗</span></div>
+</section>
+
+<!-- 11 · ESTRELA 2 -->
+<section class="slide s-estrela" data-part="2" data-notes="Estrela 2, internações (SIH). Grão: uma AIH, ou seja, uma internação. Medidas aditivas: quantidade, dias de permanência e valor. A média de permanência é derivada e não aditiva. Caráter do atendimento, óbito e UTI viraram uma tabela bugiganga. O número da AIH é dimensão degenerada. AIHs de continuação, de longa permanência, são descartadas para não contar a mesma internação duas vezes.">
+  <div class="st-head rv" style="--d:1"><span class="st-n">Estrela 2 · SIH-SUS</span><h2 class="h-m">Internações</h2></div>
+  <div class="st-svg rv" style="--d:2">{{ESTRELA:fato_internacao}}</div>
+  <div class="callouts">
+    <span class="co rv" style="--d:5">grão: 1 AIH</span>
+    <span class="co rv" style="--d:6">bugiganga: caráter × óbito × UTI</span>
+    <span class="co rv" style="--d:7">AIH de continuação descartada</span>
+  </div>
+</section>
+
+<!-- 12 · ESTRELA 3 -->
+<section class="slide s-estrela" data-part="2" data-notes="Estrela 3, produção ambulatorial (SIA). O arquivo público já vem parcialmente agregado, então o grão é estabelecimento × procedimento × mês × perfil do paciente × município de residência × ocupação (CBO). Quatro medidas aditivas. A taxa de aprovação é derivada e não aditiva: soma do aprovado dividida pela soma do apresentado, nunca somando taxas.">
+  <div class="st-head rv" style="--d:1"><span class="st-n">Estrela 3 · SIA-SUS</span><h2 class="h-m">Produção ambulatorial</h2></div>
+  <div class="st-svg rv" style="--d:2">{{ESTRELA:fato_producao_ambulatorial}}</div>
+  <div class="callouts">
+    <span class="co rv" style="--d:5">grão: estab. × proced. × mês × perfil × residência × CBO</span>
+    <span class="co rv" style="--d:6">taxa de aprovação = Σ aprovado ÷ Σ apresentado</span>
+  </div>
+</section>
+
+<!-- ============================ PARTE 3 · CONSTELAÇÃO E INTEGRAÇÃO ============================ -->
+
+<!-- 13 · ABERTURA PARTE 3 -->
+<section class="slide s-divisor" data-part="3" data-notes="Passagem para a parte 3: como as três estrelas viram uma constelação e como os dados foram integrados.">
+  {{GLITCH}}
+  <span class="div-n rv" style="--d:1">03</span>
+  <h2 class="h-l rv" style="--d:2">Constelação e integração</h2>
+</section>
+
+<!-- 14 · CONSTELAÇÃO -->
+<section class="slide s-const" data-part="3" data-notes="Quatro passos: modelamos cada estrela separadamente; identificamos as dimensões que aparecem em mais de uma; tornamos essas dimensões conformes (mesma chave, mesmos atributos, mesmos valores); e ligamos os três fatos às mesmas tabelas. As dimensões em destaque são compartilhadas: tempo, estabelecimento, procedimento, perfil do paciente e localidade.">
+  <h2 class="h-m rv" style="--d:1">Constelação de fatos</h2>
+  <div class="const-svg rv" style="--d:2">{{CONSTELACAO}}</div>
+  <div class="passos">
+    <span class="rv" style="--d:3"><b>1</b> estrelas separadas</span>
+    <span class="rv" style="--d:4"><b>2</b> dimensões em comum</span>
+    <span class="rv" style="--d:5"><b>3</b> conformar</span>
+    <span class="rv" style="--d:6"><b>4</b> ligar os fatos</span>
+  </div>
+</section>
+
+<!-- 15 · MATRIZ DE BARRAMENTO -->
+<section class="slide s-matriz" data-part="3" data-notes="A mesma informação em forma de matriz: linhas são as dimensões, colunas os fatos. As cinco primeiras linhas aparecem em mais de um fato e são as dimensões conformes. Tempo e estabelecimento são as únicas que aparecem nos três, e é por elas que o drill-across acontece.">
+  <h2 class="h-m rv" style="--d:1">Quem usa o quê</h2>
+  <div class="matriz rv" style="--d:2">
+    <div class="mh"></div><div class="mh">fato_equipe</div><div class="mh">fato_internacao</div><div class="mh">fato_producao</div>
+    <div class="ml sh">tempo</div><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i>
+    <div class="ml sh">estabelecimento</div><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i><i class="on" style="--i:5"></i>
+    <div class="ml sh">procedimento</div><i></i><i class="on" style="--i:6"></i><i class="on" style="--i:7"></i>
+    <div class="ml sh">perfil do paciente</div><i></i><i class="on" style="--i:8"></i><i class="on" style="--i:9"></i>
+    <div class="ml sh">localidade</div><i></i><i class="on" style="--i:10"></i><i class="on" style="--i:11"></i>
+    <div class="ml">tipo de equipe</div><i class="on" style="--i:12"></i><i></i><i></i>
+    <div class="ml">diagnóstico</div><i></i><i class="on" style="--i:13"></i><i></i>
+    <div class="ml">bugiganga</div><i></i><i class="on" style="--i:14"></i><i></i>
+    <div class="ml">ocupação (CBO)</div><i></i><i></i><i class="on" style="--i:15"></i>
+  </div>
+  <div class="legenda rv" style="--d:4"><span class="lg-sh"></span>dimensão conforme</div>
+</section>
+
+<!-- 16 · INTEGRAÇÃO -->
+<section class="slide s-integ" data-part="3" data-notes="Integração: o mesmo dado chega de fontes diferentes com códigos diferentes, e escolhemos uma única representação no DW. Sexo: o SIH usa 1 e 3, o SIA usa M e F; no DW fica M, F e I de ignorado. Idade: o SIH manda valor mais unidade (dias, meses, anos); vira faixa etária. Município: DATASUS usa 6 dígitos e IBGE 7; ficamos com 6. CNES às vezes perde os zeros à esquerda; padronizamos 7 dígitos. Competência: o SIH separa ano e mês; o resto usa AAAAMM.">
+  <h2 class="h-m rv" style="--d:1">Mesmo dado, códigos diferentes</h2>
+  <div class="integ">
+    <div class="ig-h rv" style="--d:2"><span></span><span>fonte A</span><span>fonte B</span><span></span><span>no DW</span></div>
+    <div class="ig rv" style="--d:3"><span class="k">sexo</span><span class="a"><i>SIH</i> 1 · 3</span><span class="a"><i>SIA</i> M · F</span><span class="to">→</span><span class="dw">M · F · I</span></div>
+    <div class="ig rv" style="--d:4"><span class="k">idade</span><span class="a"><i>SIH</i> 7 + “meses”</span><span class="a"><i>SIA</i> 0 anos</span><span class="to">→</span><span class="dw">00-04 · Criança</span></div>
+    <div class="ig rv" style="--d:5"><span class="k">município</span><span class="a"><i>DATASUS</i> 354890</span><span class="a"><i>IBGE</i> 3548906</span><span class="to">→</span><span class="dw">354890</span></div>
+    <div class="ig rv" style="--d:6"><span class="k">CNES</span><span class="a"><i>SIH</i> 407011</span><span class="a"><i>API</i> 407011 (int)</span><span class="to">→</span><span class="dw">0407011</span></div>
+    <div class="ig rv" style="--d:7"><span class="k">competência</span><span class="a"><i>SIH</i> 2024 · 1</span><span class="a"><i>SIA</i> 202401</span><span class="to">→</span><span class="dw">202401</span></div>
+  </div>
+</section>
+
+<!-- 17 · HIERARQUIAS -->
+<section class="slide s-hier" data-part="3" data-notes="As hierarquias usam o operador de ordenação parcial: A ≤ B quer dizer que A é mais detalhado e cada A pertence a um único B. No tempo, mês, trimestre, semestre e ano. No diagnóstico há duas hierarquias: a da CID (código, categoria, capítulo) e a de ICSAP (código, grupo ICSAP, sim/não). No procedimento, o próprio código SIGTAP é hierárquico: os prefixos de 2, 4 e 6 dígitos são grupo, subgrupo e forma de organização.">
+  <h2 class="h-m rv" style="--d:1">Hierarquias (≤)</h2>
+  <div class="hiers">
+    <div class="hcol rv" style="--d:2"><span class="hc-t">tempo</span><b class="lo">ano_mes</b><i>≤</i><b>trimestre</b><i>≤</i><b>semestre</b><i>≤</i><b>ano</b></div>
+    <div class="hcol rv" style="--d:3"><span class="hc-t">diagnóstico</span><b class="lo">J181</b><i>≤</i><b>J18</b><i>≤</i><b>capítulo X</b><span class="hc-alt">J181 ≤ pneumonias bacterianas ≤ ICSAP sim</span></div>
+    <div class="hcol code rv" style="--d:4"><span class="hc-t">procedimento</span>
+      <div class="code-n"><span class="c1">03</span><span class="c2">01</span><span class="c3">01</span><span class="c4">0072</span></div>
+      <div class="code-l"><span class="c1">grupo</span><span class="c2">subgrupo</span><span class="c3">forma</span><span class="c4">procedimento</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 · DECISÕES DE MODELAGEM -->
+<section class="slide s-decis" data-part="3" data-notes="Os aspectos de modelagem pedidos no enunciado: chave artificial em todas as dimensões, com um membro 0 'Não informado' para não perder fatos; tabela bugiganga; dimensões degeneradas; tabela de fatos sem fato. Mais duas decisões nossas: a mini-dimensão de perfil (sexo × faixa etária) e filtrar demanda por residência e oferta pelo município do estabelecimento.">
+  <h2 class="h-m rv" style="--d:1">Decisões de modelagem</h2>
+  <div class="tiles">
+    <div class="tile rv" style="--d:2"><code>sk_*</code><b>chave artificial</b><span>+ membro 0 “Não informado”</span></div>
+    <div class="tile rv" style="--d:3"><code>dim_junk</code><b>bugiganga</b><span>caráter · óbito · UTI</span></div>
+    <div class="tile rv" style="--d:4"><code>n_aih</code><b>dimensão degenerada</b><span>e id_equipe</span></div>
+    <div class="tile rv" style="--d:5"><code>COUNT(*)</code><b>fato sem fato</b><span>fato_equipe</span></div>
+    <div class="tile rv" style="--d:6"><code>sexo × faixa</code><b>mini-dimensão</b><span>perfil do paciente</span></div>
+    <div class="tile rv" style="--d:7"><code>residência</code><b>demanda ≠ oferta</b><span>quem mora × onde atende</span></div>
+  </div>
+</section>
+
+<!-- ============================ PARTE 4 · CONSULTAS OLAP ============================ -->
+
+<!-- 19 · ABERTURA PARTE 4 -->
+<section class="slide s-divisor" data-part="4" data-notes="Passagem para a parte 4: as cinco consultas, uma por operação OLAP.">
+  {{GLITCH}}
+  <span class="div-n rv" style="--d:1">04</span>
+  <h2 class="h-l rv" style="--d:2">Cinco consultas OLAP</h2>
+  <div class="ops rv" style="--d:3"><span>roll-up</span><span>drill-down</span><span>slice &amp; dice</span><span>pivot</span><span>drill-across</span></div>
+</section>
+
+<!-- 20 · Q1 ROLL-UP -->
+<section class="slide s-rollup" data-part="4" data-notes="Consulta 1, roll-up no tempo, com dados reais do SIH. Foram 5.255 internações por condições sensíveis à atenção primária de residentes em São Carlos em dois anos, 16% de todas as internações de residentes. No mês, o maior valor é dezembro de 2023, com 291, e o menor é janeiro de 2024, com 167: o mês aqui é o de processamento da AIH, então parte dessa oscilação é o ritmo de apresentação dos hospitais. Subindo para trimestre a série fica estável, entre 572 e 728. No ano: 2.700 em 2023 e 2.555 em 2024, queda de cerca de 5%. Fato: internação; filtro ICSAP = sim e residência = São Carlos; medida: soma de qtd_internacoes.">
+  <div class="q-head rv" style="--d:1"><span class="q-n">Consulta 1</span><span class="q-op">roll-up</span></div>
+  <h2 class="h-m q-t rv" style="--d:1">ICSAP de residentes: mês → trimestre → ano</h2>
+  <div class="graf-wrap rv" style="--d:2">{{Q1}}</div>
+  <div class="q-dados rv" style="--d:9">fato_internacao · icsap = Sim · residência = São Carlos · Σ qtd_internacoes · SIH/SUS 2023–2024</div>
+</section>
+
+<!-- 21 · Q2 DRILL-DOWN -->
+<section class="slide s-drill" data-part="4" data-notes="Consulta 2, drill-down no procedimento, com dados reais do SIA. Nos estabelecimentos de São Carlos, o grupo com mais procedimentos aprovados é o 02, finalidade diagnóstica, com 1,8 milhão em dois anos; o 03, procedimentos clínicos, vem depois em quantidade, mas tem o maior valor aprovado, cerca de R$ 31 milhões. Descendo no grupo 02, o subgrupo de laboratório clínico concentra 1,4 milhão, e no procedimento aparecem hemograma completo, com 127 mil, e dosagem de creatinina, com 102 mil. Os nomes vêm da tabela SIGTAP.">
+  <div class="q-head rv" style="--d:1"><span class="q-n">Consulta 2</span><span class="q-op">drill-down</span></div>
+  <h2 class="h-m q-t rv" style="--d:1">Produção: grupo → subgrupo → procedimento</h2>
+  <div class="graf-wrap rv" style="--d:2">{{Q2}}</div>
+  <div class="q-dados rv" style="--d:9">fato_producao_ambulatorial · estabelecimentos em São Carlos · Σ qtd_aprovada · SIA/SUS 2023–2024 · nomes: SIGTAP</div>
+</section>
+
+<!-- 22 · Q3 SLICE AND DICE -->
+<section class="slide s-cubo" data-part="4" data-notes="Consulta 3, slice and dice. Slice: ano = 2024. Dice: ciclo de vida = idoso e diagnóstico ICSAP. Foram 1.358 internações evitáveis de idosos residentes em 2024. As doenças cerebrovasculares lideram, com 154 mulheres e 170 homens, seguidas da insuficiência cardíaca, com 128 e 114. A última coluna é a média de dias: doenças pulmonares ficam 9,5 dias e insuficiência cardíaca 8, as internações mais longas. São condições crônicas acompanhadas pela atenção básica.">
+  <div class="q-head rv" style="--d:1"><span class="q-n">Consulta 3</span><span class="q-op">slice &amp; dice</span></div>
+  <h2 class="h-m q-t rv" style="--d:1">ICSAP de idosos em 2024, por causa e sexo</h2>
+  <div class="cubo-wrap mini rv" style="--d:2">{{CUBO}}</div>
+  <div class="graf-wrap q3w rv" style="--d:3">{{Q3}}</div>
+  <div class="q-dados rv" style="--d:9">slice: ano = 2024 · dice: ciclo de vida = idoso, ICSAP = sim · residentes · SIH/SUS</div>
+</section>
+
+<!-- 23 · Q4 PIVOT -->
+<section class="slide s-pivot" data-part="4" data-notes="Consulta 4, pivot: ICSAP de residentes em 2023 e 2024, primeiro com causas nas linhas e ciclo de vida nas colunas, depois rotacionada. Na primeira leitura, cada causa mostra em que fase da vida pesa: as circulatórias são quase só de adultos e idosos, com 621 idosos por doença cerebrovascular. Na leitura girada, cada fase da vida mostra suas causas: nas crianças, as doenças pulmonares dominam, com 329. Isso orienta programas por público e linhas de cuidado por doença.">
+  <div class="q-head rv" style="--d:1"><span class="q-n">Consulta 4</span><span class="q-op">pivot</span></div>
+  <h2 class="h-m q-t rv" style="--d:1">Causa × ciclo de vida, e girado</h2>
+  <div class="graf-wrap rv" style="--d:2">{{Q4}}</div>
+  <div class="q-dados rv" style="--d:9">fato_internacao · dim_diagnostico × dim_perfil_paciente · Σ qtd_internacoes · residentes, 2023–2024</div>
+</section>
+
+<!-- 24 · Q5 DRILL-ACROSS -->
+<section class="slide s-across" data-part="4" data-notes="Consulta 5, drill-across, a pergunta central, com os três fatos reais. Cada fato é agregado sozinho por mês e os resultados são juntados por ano_mes, a dimensão conforme. Oferta: 23 equipes de Saúde da Família em todos os meses, cobertura estimada de 31,1%. Uso: a produção das UBS no SIA é zero em todos os meses, porque desde o e-SUS APS ela vai para o SISAB; a consulta mostra isso em vez de esconder. Internações: a taxa de ICSAP varia entre 6,55 e 11,42 por 10 mil habitantes e termina 2024 em 8,40. Com a oferta constante, ainda não dá para relacionar cobertura e internações; isso pede mais anos e os dados do SISAB.">
+  <div class="q-head rv" style="--d:1"><span class="q-n">Consulta 5</span><span class="q-op">drill-across</span></div>
+  <h2 class="h-m q-t rv" style="--d:1">Oferta × uso × internações, mês a mês</h2>
+  <div class="graf-wrap rv" style="--d:2">{{Q5}}</div>
+  <div class="q-dados rv" style="--d:9">cobertura = eSF × 3.450 ÷ 254.857 · taxa = ICSAP ÷ 254.857 × 10.000 · CNES, SIA e SIH 2023–2024</div>
+</section>
+
+<!-- 25 · LIMITES -->
+<section class="slide s-limites" data-part="4" data-notes="Limites que os dados reais confirmaram. As UBS de São Carlos não lançam produção no SIA: ela está no SISAB, que não usamos. A cobertura é uma estimativa pelo parâmetro de 3.450 pessoas por equipe, e o número de equipes ficou constante em 23 nos dois anos. Usamos a competência, o mês de processamento, não a data da internação. E as coordenadas da API do CNES são imprecisas. Próximo passo: incluir o SISAB e mais anos para ter variação na oferta.">
+  <h2 class="h-m rv" style="--d:1">O que o modelo não resolve</h2>
+  <div class="lims">
+    <div class="lim rv" style="--d:2"><b>SISAB ≠ SIA</b><span>produção das UBS = 0 no SIA</span></div>
+    <div class="lim rv" style="--d:3"><b>cobertura estimada</b><span>23 eSF × 3.450, constante</span></div>
+    <div class="lim rv" style="--d:4"><b>competência</b><span>mês de apresentação, não do evento</span></div>
+    <div class="lim rv" style="--d:5"><b>coordenadas</b><span>imprecisas na API do CNES</span></div>
+  </div>
+  <div class="prox rv" style="--d:6">próximo passo → SISAB e mais anos (parte 2)</div>
+</section>
+
+<!-- 26 · ENCERRAMENTO -->
+<section class="slide s-fim" data-part="4" data-notes="Agradecer e abrir para perguntas. Retomar a frase: três processos, uma constelação, uma pergunta de política pública para São Carlos.">
+  {{GLITCH}}
+  <div class="fim-txt">
+    <h2 class="h-xl rv" style="--d:1">Obrigado<em>.</em></h2>
+    <p class="lede rv" style="--d:2">Perguntas?</p>
+  </div>
+  <div class="capa-mapa rv" style="--d:2">{{MAPA}}</div>
+</section>

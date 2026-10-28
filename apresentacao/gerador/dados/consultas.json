@@ -1,0 +1,1080 @@
+{
+ "q1": {
+  "mes": [
+   {
+    "ano_mes": 202301,
+    "trimestre": "2023-T1",
+    "ano": 2023,
+    "n": 210
+   },
+   {
+    "ano_mes": 202302,
+    "trimestre": "2023-T1",
+    "ano": 2023,
+    "n": 172
+   },
+   {
+    "ano_mes": 202303,
+    "trimestre": "2023-T1",
+    "ano": 2023,
+    "n": 218
+   },
+   {
+    "ano_mes": 202304,
+    "trimestre": "2023-T2",
+    "ano": 2023,
+    "n": 236
+   },
+   {
+    "ano_mes": 202305,
+    "trimestre": "2023-T2",
+    "ano": 2023,
+    "n": 261
+   },
+   {
+    "ano_mes": 202306,
+    "trimestre": "2023-T2",
+    "ano": 2023,
+    "n": 231
+   },
+   {
+    "ano_mes": 202307,
+    "trimestre": "2023-T3",
+    "ano": 2023,
+    "n": 221
+   },
+   {
+    "ano_mes": 202308,
+    "trimestre": "2023-T3",
+    "ano": 2023,
+    "n": 207
+   },
+   {
+    "ano_mes": 202309,
+    "trimestre": "2023-T3",
+    "ano": 2023,
+    "n": 245
+   },
+   {
+    "ano_mes": 202310,
+    "trimestre": "2023-T4",
+    "ano": 2023,
+    "n": 206
+   },
+   {
+    "ano_mes": 202311,
+    "trimestre": "2023-T4",
+    "ano": 2023,
+    "n": 202
+   },
+   {
+    "ano_mes": 202312,
+    "trimestre": "2023-T4",
+    "ano": 2023,
+    "n": 291
+   },
+   {
+    "ano_mes": 202401,
+    "trimestre": "2024-T1",
+    "ano": 2024,
+    "n": 167
+   },
+   {
+    "ano_mes": 202402,
+    "trimestre": "2024-T1",
+    "ano": 2024,
+    "n": 200
+   },
+   {
+    "ano_mes": 202403,
+    "trimestre": "2024-T1",
+    "ano": 2024,
+    "n": 205
+   },
+   {
+    "ano_mes": 202404,
+    "trimestre": "2024-T2",
+    "ano": 2024,
+    "n": 241
+   },
+   {
+    "ano_mes": 202405,
+    "trimestre": "2024-T2",
+    "ano": 2024,
+    "n": 209
+   },
+   {
+    "ano_mes": 202406,
+    "trimestre": "2024-T2",
+    "ano": 2024,
+    "n": 202
+   },
+   {
+    "ano_mes": 202407,
+    "trimestre": "2024-T3",
+    "ano": 2024,
+    "n": 210
+   },
+   {
+    "ano_mes": 202408,
+    "trimestre": "2024-T3",
+    "ano": 2024,
+    "n": 228
+   },
+   {
+    "ano_mes": 202409,
+    "trimestre": "2024-T3",
+    "ano": 2024,
+    "n": 221
+   },
+   {
+    "ano_mes": 202410,
+    "trimestre": "2024-T4",
+    "ano": 2024,
+    "n": 241
+   },
+   {
+    "ano_mes": 202411,
+    "trimestre": "2024-T4",
+    "ano": 2024,
+    "n": 217
+   },
+   {
+    "ano_mes": 202412,
+    "trimestre": "2024-T4",
+    "ano": 2024,
+    "n": 214
+   }
+  ],
+  "tri": [
+   {
+    "trimestre": "2023-T1",
+    "n": 600
+   },
+   {
+    "trimestre": "2023-T2",
+    "n": 728
+   },
+   {
+    "trimestre": "2023-T3",
+    "n": 673
+   },
+   {
+    "trimestre": "2023-T4",
+    "n": 699
+   },
+   {
+    "trimestre": "2024-T1",
+    "n": 572
+   },
+   {
+    "trimestre": "2024-T2",
+    "n": 652
+   },
+   {
+    "trimestre": "2024-T3",
+    "n": 659
+   },
+   {
+    "trimestre": "2024-T4",
+    "n": 672
+   }
+  ],
+  "ano": [
+   {
+    "ano": 2023,
+    "n": 2700
+   },
+   {
+    "ano": 2024,
+    "n": 2555
+   }
+  ]
+ },
+ "q2": {
+  "grupo": [
+   {
+    "cod": "02",
+    "n": 1767091,
+    "valor": 18015200.699998133,
+    "nome": "Procedimentos com finalidade diagnóstica"
+   },
+   {
+    "cod": "03",
+    "n": 1055094,
+    "valor": 31280793.320000313,
+    "nome": "Procedimentos clínicos"
+   },
+   {
+    "cod": "01",
+    "n": 73886,
+    "valor": 4375.4400000000005,
+    "nome": "Ações de promoção e prevenção em saúde"
+   },
+   {
+    "cod": "08",
+    "n": 36676,
+    "valor": 181546.1999999995,
+    "nome": "Ações complementares da atenção à saúde"
+   },
+   {
+    "cod": "04",
+    "n": 29067,
+    "valor": 3550130.5999999694,
+    "nome": "Procedimentos cirúrgicos"
+   },
+   {
+    "cod": "07",
+    "n": 699,
+    "valor": 599707.090000001,
+    "nome": "Órteses, próteses e materiais especiais"
+   }
+  ],
+  "sub": [
+   {
+    "cod": "0202",
+    "n": 1390094,
+    "nome": "Diagnóstico em laboratório clínico"
+   },
+   {
+    "cod": "0211",
+    "n": 148935,
+    "nome": "Métodos diagnósticos em especialidades"
+   },
+   {
+    "cod": "0204",
+    "n": 84022,
+    "nome": "Diagnóstico por radiologia"
+   },
+   {
+    "cod": "0205",
+    "n": 57799,
+    "nome": "Diagnóstico por ultrasonografia"
+   },
+   {
+    "cod": "0212",
+    "n": 24208,
+    "nome": "Diagnóstico e procedimentos especiais em hemoterapia"
+   },
+   {
+    "cod": "0214",
+    "n": 14068,
+    "nome": "Diagnóstico por teste rápido"
+   },
+   {
+    "cod": "0206",
+    "n": 13386,
+    "nome": "Diagnóstico por tomografia"
+   },
+   {
+    "cod": "0203",
+    "n": 12915,
+    "nome": "Diagnóstico por anatomia patológica e citopatologia"
+   },
+   {
+    "cod": "0209",
+    "n": 7231,
+    "nome": "Diagnóstico por endoscopia"
+   },
+   {
+    "cod": "0207",
+    "n": 6647,
+    "nome": "Diagnóstico por ressonância magnética"
+   },
+   {
+    "cod": "0201",
+    "n": 5823,
+    "nome": "Coleta de material"
+   },
+   {
+    "cod": "0208",
+    "n": 1887,
+    "nome": "Diagnóstico por medicina nuclear in vivo"
+   },
+   {
+    "cod": "0213",
+    "n": 50,
+    "nome": "Diagnóstico em vigilância epidemiológica e ambiental"
+   },
+   {
+    "cod": "0210",
+    "n": 26,
+    "nome": "Diagnóstico por radiologia intervencionista"
+   }
+  ],
+  "proc": [
+   {
+    "cod": "0202020380",
+    "n": 126646,
+    "nome": "Hemograma completo"
+   },
+   {
+    "cod": "0202010317",
+    "n": 101989,
+    "nome": "Dosagem de creatinina"
+   },
+   {
+    "cod": "0202050017",
+    "n": 71391,
+    "nome": "Analise de caracteres fisicos, elementos e sedimento da urina"
+   },
+   {
+    "cod": "0202010473",
+    "n": 67970,
+    "nome": "Dosagem de glicose"
+   },
+   {
+    "cod": "0202010694",
+    "n": 67140,
+    "nome": "Dosagem de ureia"
+   },
+   {
+    "cod": "0202010600",
+    "n": 64799,
+    "nome": "Dosagem de potassio"
+   }
+  ],
+  "grupo_escolhido": "02",
+  "sub_escolhido": "0202"
+ },
+ "q3": [
+  {
+   "causa": "05 Infecções de ouvido, nariz e garganta",
+   "sexo": "F",
+   "n": 1,
+   "dias": 1
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "sexo": "F",
+   "n": 154,
+   "dias": 755
+  },
+  {
+   "causa": "17 Doença inflamatória de órgãos pélvicos femininos",
+   "sexo": "F",
+   "n": 2,
+   "dias": 8
+  },
+  {
+   "causa": "11 Insuficiência cardíaca",
+   "sexo": "M",
+   "n": 114,
+   "dias": 1045
+  },
+  {
+   "causa": "03 Anemia",
+   "sexo": "F",
+   "n": 1,
+   "dias": 1
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "sexo": "F",
+   "n": 16,
+   "dias": 82
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "sexo": "F",
+   "n": 12,
+   "dias": 43
+  },
+  {
+   "causa": "07 Asma",
+   "sexo": "F",
+   "n": 4,
+   "dias": 27
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "sexo": "M",
+   "n": 64,
+   "dias": 400
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "sexo": "F",
+   "n": 16,
+   "dias": 124
+  },
+  {
+   "causa": "09 Hipertensão",
+   "sexo": "F",
+   "n": 5,
+   "dias": 15
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "sexo": "M",
+   "n": 3,
+   "dias": 15
+  },
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "sexo": "M",
+   "n": 3,
+   "dias": 48
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "sexo": "F",
+   "n": 77,
+   "dias": 597
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "sexo": "F",
+   "n": 30,
+   "dias": 186
+  },
+  {
+   "causa": "14 Epilepsias",
+   "sexo": "M",
+   "n": 12,
+   "dias": 57
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "sexo": "M",
+   "n": 170,
+   "dias": 896
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "sexo": "F",
+   "n": 75,
+   "dias": 419
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "sexo": "M",
+   "n": 20,
+   "dias": 141
+  },
+  {
+   "causa": "09 Hipertensão",
+   "sexo": "M",
+   "n": 8,
+   "dias": 82
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "sexo": "F",
+   "n": 3,
+   "dias": 8
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "sexo": "F",
+   "n": 42,
+   "dias": 174
+  },
+  {
+   "causa": "10 Angina",
+   "sexo": "F",
+   "n": 69,
+   "dias": 224
+  },
+  {
+   "causa": "11 Insuficiência cardíaca",
+   "sexo": "F",
+   "n": 128,
+   "dias": 902
+  },
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "sexo": "F",
+   "n": 5,
+   "dias": 49
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "sexo": "M",
+   "n": 81,
+   "dias": 368
+  },
+  {
+   "causa": "10 Angina",
+   "sexo": "M",
+   "n": 89,
+   "dias": 270
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "sexo": "M",
+   "n": 63,
+   "dias": 729
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "sexo": "M",
+   "n": 33,
+   "dias": 160
+  },
+  {
+   "causa": "14 Epilepsias",
+   "sexo": "F",
+   "n": 17,
+   "dias": 57
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "sexo": "M",
+   "n": 14,
+   "dias": 74
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "sexo": "M",
+   "n": 25,
+   "dias": 78
+  },
+  {
+   "causa": "07 Asma",
+   "sexo": "M",
+   "n": 2,
+   "dias": 16
+  }
+ ],
+ "q4": [
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "ciclo": "Idoso",
+   "n": 21
+  },
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "ciclo": "Adolescente",
+   "n": 5
+  },
+  {
+   "causa": "03 Anemia",
+   "ciclo": "Adulto",
+   "n": 3
+  },
+  {
+   "causa": "11 Insuficiência cardíaca",
+   "ciclo": "Idoso",
+   "n": 557
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "ciclo": "Criança",
+   "n": 6
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "ciclo": "Idoso",
+   "n": 13
+  },
+  {
+   "causa": "14 Epilepsias",
+   "ciclo": "Adolescente",
+   "n": 16
+  },
+  {
+   "causa": "09 Hipertensão",
+   "ciclo": "Adulto",
+   "n": 19
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "ciclo": "Adulto",
+   "n": 43
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "ciclo": "Idoso",
+   "n": 299
+  },
+  {
+   "causa": "14 Epilepsias",
+   "ciclo": "Criança",
+   "n": 43
+  },
+  {
+   "causa": "05 Infecções de ouvido, nariz e garganta",
+   "ciclo": "Adulto",
+   "n": 10
+  },
+  {
+   "causa": "14 Epilepsias",
+   "ciclo": "Idoso",
+   "n": 69
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "ciclo": "Adulto",
+   "n": 46
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "ciclo": "Adulto",
+   "n": 189
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "ciclo": "Adolescente",
+   "n": 15
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "ciclo": "Adolescente",
+   "n": 1
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "ciclo": "Criança",
+   "n": 329
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "ciclo": "Criança",
+   "n": 40
+  },
+  {
+   "causa": "17 Doença inflamatória de órgãos pélvicos femininos",
+   "ciclo": "Adolescente",
+   "n": 10
+  },
+  {
+   "causa": "05 Infecções de ouvido, nariz e garganta",
+   "ciclo": "Idoso",
+   "n": 2
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "ciclo": "Adolescente",
+   "n": 4
+  },
+  {
+   "causa": "19 Doenças relacionadas ao pré-natal e parto",
+   "ciclo": "Adolescente",
+   "n": 4
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "ciclo": "Idoso",
+   "n": 137
+  },
+  {
+   "causa": "14 Epilepsias",
+   "ciclo": "Adulto",
+   "n": 79
+  },
+  {
+   "causa": "05 Infecções de ouvido, nariz e garganta",
+   "ciclo": "Criança",
+   "n": 41
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "ciclo": "Idoso",
+   "n": 254
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "ciclo": "Adolescente",
+   "n": 5
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "ciclo": "Adolescente",
+   "n": 29
+  },
+  {
+   "causa": "10 Angina",
+   "ciclo": "Adulto",
+   "n": 120
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "ciclo": "Adulto",
+   "n": 130
+  },
+  {
+   "causa": "07 Asma",
+   "ciclo": "Adolescente",
+   "n": 12
+  },
+  {
+   "causa": "03 Anemia",
+   "ciclo": "Criança",
+   "n": 2
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "ciclo": "Adolescente",
+   "n": 3
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "ciclo": "Idoso",
+   "n": 51
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "ciclo": "Idoso",
+   "n": 62
+  },
+  {
+   "causa": "07 Asma",
+   "ciclo": "Idoso",
+   "n": 16
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "ciclo": "Adulto",
+   "n": 33
+  },
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "ciclo": "Criança",
+   "n": 12
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "ciclo": "Adulto",
+   "n": 124
+  },
+  {
+   "causa": "07 Asma",
+   "ciclo": "Adulto",
+   "n": 32
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "ciclo": "Adolescente",
+   "n": 2
+  },
+  {
+   "causa": "10 Angina",
+   "ciclo": "Idoso",
+   "n": 273
+  },
+  {
+   "causa": "18 Úlcera gastrointestinal",
+   "ciclo": "Idoso",
+   "n": 245
+  },
+  {
+   "causa": "11 Insuficiência cardíaca",
+   "ciclo": "Criança",
+   "n": 1
+  },
+  {
+   "causa": "02 Gastroenterites infecciosas",
+   "ciclo": "Criança",
+   "n": 79
+  },
+  {
+   "causa": "01 Preveníveis por imunização e condições sensíveis",
+   "ciclo": "Adulto",
+   "n": 58
+  },
+  {
+   "causa": "13 Diabetes mellitus",
+   "ciclo": "Criança",
+   "n": 6
+  },
+  {
+   "causa": "07 Asma",
+   "ciclo": "Criança",
+   "n": 159
+  },
+  {
+   "causa": "03 Anemia",
+   "ciclo": "Idoso",
+   "n": 3
+  },
+  {
+   "causa": "11 Insuficiência cardíaca",
+   "ciclo": "Adulto",
+   "n": 127
+  },
+  {
+   "causa": "19 Doenças relacionadas ao pré-natal e parto",
+   "ciclo": "Criança",
+   "n": 43
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "ciclo": "Adulto",
+   "n": 4
+  },
+  {
+   "causa": "09 Hipertensão",
+   "ciclo": "Idoso",
+   "n": 24
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "ciclo": "Idoso",
+   "n": 87
+  },
+  {
+   "causa": "16 Infecção da pele e tecido subcutâneo",
+   "ciclo": "Adolescente",
+   "n": 10
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "ciclo": "Adulto",
+   "n": 204
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "ciclo": "Criança",
+   "n": 4
+  },
+  {
+   "causa": "08 Doenças pulmonares",
+   "ciclo": "Adolescente",
+   "n": 2
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "ciclo": "Idoso",
+   "n": 621
+  },
+  {
+   "causa": "05 Infecções de ouvido, nariz e garganta",
+   "ciclo": "Adolescente",
+   "n": 5
+  },
+  {
+   "causa": "06 Pneumonias bacterianas",
+   "ciclo": "Criança",
+   "n": 72
+  },
+  {
+   "causa": "17 Doença inflamatória de órgãos pélvicos femininos",
+   "ciclo": "Idoso",
+   "n": 3
+  },
+  {
+   "causa": "04 Deficiências nutricionais",
+   "ciclo": "Criança",
+   "n": 5
+  },
+  {
+   "causa": "12 Doenças cerebrovasculares",
+   "ciclo": "Adulto",
+   "n": 229
+  },
+  {
+   "causa": "15 Infecção no rim e trato urinário",
+   "ciclo": "Criança",
+   "n": 29
+  },
+  {
+   "causa": "17 Doença inflamatória de órgãos pélvicos femininos",
+   "ciclo": "Adulto",
+   "n": 43
+  },
+  {
+   "causa": "19 Doenças relacionadas ao pré-natal e parto",
+   "ciclo": "Adulto",
+   "n": 31
+  }
+ ],
+ "q5": [
+  {
+   "ano_mes": 202301,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 210,
+   "taxa": 8.24
+  },
+  {
+   "ano_mes": 202302,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 172,
+   "taxa": 6.75
+  },
+  {
+   "ano_mes": 202303,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 218,
+   "taxa": 8.55
+  },
+  {
+   "ano_mes": 202304,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 236,
+   "taxa": 9.26
+  },
+  {
+   "ano_mes": 202305,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 261,
+   "taxa": 10.24
+  },
+  {
+   "ano_mes": 202306,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 231,
+   "taxa": 9.06
+  },
+  {
+   "ano_mes": 202307,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 221,
+   "taxa": 8.67
+  },
+  {
+   "ano_mes": 202308,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 207,
+   "taxa": 8.12
+  },
+  {
+   "ano_mes": 202309,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 245,
+   "taxa": 9.61
+  },
+  {
+   "ano_mes": 202310,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 206,
+   "taxa": 8.08
+  },
+  {
+   "ano_mes": 202311,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 202,
+   "taxa": 7.93
+  },
+  {
+   "ano_mes": 202312,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 291,
+   "taxa": 11.42
+  },
+  {
+   "ano_mes": 202401,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 167,
+   "taxa": 6.55
+  },
+  {
+   "ano_mes": 202402,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 200,
+   "taxa": 7.85
+  },
+  {
+   "ano_mes": 202403,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 205,
+   "taxa": 8.04
+  },
+  {
+   "ano_mes": 202404,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 241,
+   "taxa": 9.46
+  },
+  {
+   "ano_mes": 202405,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 209,
+   "taxa": 8.2
+  },
+  {
+   "ano_mes": 202406,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 202,
+   "taxa": 7.93
+  },
+  {
+   "ano_mes": 202407,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 210,
+   "taxa": 8.24
+  },
+  {
+   "ano_mes": 202408,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 228,
+   "taxa": 8.95
+  },
+  {
+   "ano_mes": 202409,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 221,
+   "taxa": 8.67
+  },
+  {
+   "ano_mes": 202410,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 241,
+   "taxa": 9.46
+  },
+  {
+   "ano_mes": 202411,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 217,
+   "taxa": 8.51
+  },
+  {
+   "ano_mes": 202412,
+   "equipes_sf": 23,
+   "cobertura": 31.1,
+   "producao_aps": 0,
+   "icsap": 214,
+   "taxa": 8.4
+  }
+ ],
+ "apoio": {
+  "internacoes_residentes": 32799,
+  "icsap_residentes": 5255
+ }
+}

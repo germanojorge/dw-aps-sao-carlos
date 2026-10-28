@@ -1,0 +1,60 @@
+/* ===========================================================
+   TEMA "BOLETIM COBALTO"
+   Duas cores (papel creme + cobalto), papel quadriculado permanente,
+   filetes no topo e no pé, serifa Newsreader 400, rótulos Hanken em caixa alta,
+   cromo em DM Mono. Destaques usam inversão (fundo cobalto, texto creme).
+   =========================================================== */
+:root {
+  --stage-bg: #d9d3c2;
+  --slide-bg: #F0EBDE;
+  --bg: #F0EBDE;
+  --ink: #1F2BE0;
+  --ink-2: #1F2BE0;
+  --mute: rgba(31, 43, 224, .62);
+  --acc: #1F2BE0;          /* números, linhas, ênfases */
+  --hit-bg: #1F2BE0;       /* destaque = inversão */
+  --hit-fg: #F0EBDE;
+  --faint: rgba(31, 43, 224, .28);
+  --line: rgba(31, 43, 224, .55);
+  --panel: rgba(240, 235, 222, .78);
+  --panel-strong: rgba(31, 43, 224, .09);
+  --fd: 'Newsreader', Georgia, serif;
+  --fdw: 400;  --fdls: -.012em;  --fdem: italic;
+  --fdw2: 400; --fdls2: -.005em;
+  --fb: 'Hanken Grotesk', sans-serif;
+  --fm: 'DM Mono', ui-monospace, monospace;
+  --lbl-f: 'Hanken Grotesk', sans-serif; --lbl-w: 600; --lbl-ls: .18em;
+  --radius: 0px; --radius-sm: 0px; --pill: 0px;
+}
+
+/* papel quadriculado + filetes de topo e pé em todos os slides */
+.deco { background-image:
+    linear-gradient(to right, rgba(31, 43, 224, .10) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 43, 224, .10) 1px, transparent 1px);
+  background-size: 48px 48px; }
+.deco::before, .deco::after { content: ""; position: absolute; left: 80px; right: 80px; height: 1.5px; background: var(--ink); }
+.deco::before { top: 92px; }
+.deco::after { bottom: 92px; }
+.cr-l { left: 80px; top: 42px; }
+.cr-r { right: 80px; top: 42px; }
+.cr-n { right: 80px; bottom: 40px; }
+.cromo span { color: var(--ink); letter-spacing: .08em; }
+
+/* ênfase em itálico na cor mais suave */
+.h-xl em, .h-l em, .h-m em { color: #5560E5; }
+
+/* coluna "glitch" nas capas e divisores */
+.glitch { right: 80px; top: 120px; width: 120px; height: 840px; }
+.glitch rect { fill: var(--ink); }
+.glitch { opacity: 0; transition: opacity 1s .5s; }
+.slide.visible .glitch { opacity: 1; }
+.s-capa .capa-mapa, .s-fim .capa-mapa { right: 300px; }
+.s-pergunta .glitch, .s-divisor .glitch { height: 760px; top: 160px; }
+
+/* sem cantos arredondados; caixas de data mart seguem a notação de aula (arredondadas) */
+.mart .box { border-radius: 40px; border-width: 1.5px; }
+.chip b { font-weight: 500; }
+.q-op { letter-spacing: .1em; }
+.matriz i { border-radius: 0; }
+.matriz i.on { border-radius: 0; }
+.fdw, .join { border-radius: 50%; }

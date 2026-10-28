@@ -1,0 +1,33 @@
+# Atenção primária à saúde em São Carlos
+
+Trabalho Prático 1 de **SCC0245 – Processamento Analítico de Dados** (ICMC-USP): um data warehouse que liga
+equipes de saúde (CNES), produção ambulatorial (SIA) e internações evitáveis (SIH) em São Carlos, 2023–2024.
+
+**Slides:** https://germanojorge.github.io/dw-aps-sao-carlos/
+
+## Como editar os slides
+
+Todo o texto dos slides está em um arquivo só: [`apresentacao/gerador/slides.html`](apresentacao/gerador/slides.html).
+
+1. Abra o arquivo no GitHub e clique no lápis (**Edit this file**).
+2. Ache o slide pelo comentário que o abre, por exemplo `<!-- 20 · Q1 ROLL-UP -->`, e mude o texto.
+   - O que aparece na tela fica entre as tags (`<h2>…</h2>`, `<span>…</span>`).
+   - As notas do apresentador ficam no atributo `data-notes="…"` de cada slide (tecla **N** mostra na apresentação).
+   - Não apague as tags nem os marcadores entre chaves duplas, como `{{Q1}}` ou `{{ICON:users}}`: eles viram gráficos e ícones.
+3. Clique em **Commit changes**. Em 1 ou 2 minutos o link acima mostra a versão nova
+   (o andamento aparece na aba **Actions**; se ficar vermelho, a mudança quebrou algo e dá para desfazer pelo histórico).
+
+Dicas: se duas pessoas forem mexer ao mesmo tempo, combinem quem fica com qual parte (cada parte é um bloco de slides).
+O modo de edição dentro da apresentação (tecla **E**) só salva no seu computador: para valer para todos, edite pelo GitHub.
+
+## Estrutura
+
+| Pasta | O que tem |
+|---|---|
+| `notebook/` | ETL completo (PySUS → DuckDB) e as 5 consultas OLAP. Os dados de São Carlos já filtrados estão em `notebook/dados/staging/`, então o notebook roda sem baixar nada. |
+| `esquemas/` | Diagramas das estrelas e da constelação, e a especificação das dimensões |
+| `relatorio/` | Relatório em .docx/PDF (template do ICMC) e versão em LaTeX; geradores em `relatorio/gerador/` |
+| `apresentacao/` | Slides em HTML nos dois estilos; gerador em `apresentacao/gerador/` |
+
+Rodar localmente: `cd apresentacao/gerador && python build.py` regenera os slides (só precisa de Python 3).
+Os detalhes de cada parte estão no [`CLAUDE.md`](CLAUDE.md).
