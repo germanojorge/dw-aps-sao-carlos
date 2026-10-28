@@ -361,7 +361,7 @@ RESULTADOS = [
   [("consulta3.png", "Consulta 3 no notebook: ICSAP de idosos residentes em 2024 por grupo de causa e sexo.", 12.5)]),
  ("Na primeira orientação, cada causa mostra em que fase da vida pesa: as doenças circulatórias são quase exclusivas de adultos "
   "e idosos (621 idosos com doença cerebrovascular nos dois anos). Na orientação rotacionada, cada fase da vida mostra suas "
-  "causas: nas crianças predominam as doenças pulmonares (329) e as gastroenterites (79); nos adultos, as doenças "
+  "causas: nas crianças predominam as doenças pulmonares (329) e a asma (159); nos adultos, as doenças "
   "cerebrovasculares (229), a infecção do rim e trato urinário (204) e a de pele e subcutâneo (189).",
   [("consulta4.png", "Consulta 4 no notebook: ICSAP por causa × ciclo de vida e a mesma tabela rotacionada.", 15)]),
  ("O drill-across funcionou como projetado e expôs dois fatos sobre as fontes. Primeiro, São Carlos manteve 23 equipes de Saúde "
