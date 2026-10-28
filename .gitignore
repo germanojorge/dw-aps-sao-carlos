@@ -1,10 +1,8 @@
-# Dados do notebook: guardamos os dados reais já filtrados para São Carlos
-# (staging/ e referencia/, ~13 MB) para não precisar baixar de novo do DATASUS.
-# O resto é regenerável ou temporário (downloads estaduais, DW pronto).
+# Dados do notebook: versionamos os dados reais filtrados para São Carlos (staging/, referencia/)
+# e o DW pronto (dw/ e o .duckdb), para os colegas não precisarem baixar nem rodar nada.
+# Ficam de fora só os downloads estaduais temporários.
 notebook/dados/ftp/
 notebook/dados/pysus_cache/
-notebook/dados/dw/
-notebook/dados/*.duckdb
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
@@ -15,6 +13,3 @@ node_modules/
 .venv/
 relatorio/gerador/latex/relatorio.log
 relatorio/gerador/latex/relatorio.pdf
-
-# PDFs da professora (material da disciplina): ficam só local, o repositório é público
-enunciado/*.pdf

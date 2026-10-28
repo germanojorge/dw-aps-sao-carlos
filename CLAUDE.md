@@ -71,7 +71,7 @@ apresentacao/gerador  build.py junta slides.html + base.css + tema_*.css + deck.
 Repositório público: https://github.com/germanojorge/dw-aps-sao-carlos (branch `main`). A cada push que mexe em `apresentacao/`,
 o workflow `.github/workflows/slides.yml` roda o `build.py` e publica em https://germanojorge.github.io/dw-aps-sao-carlos/
 (página inicial em `apresentacao/site/index.html`). O grupo edita o `slides.html` pelo site do GitHub; o passo a passo está no `README.md`.
-Os PDFs da professora (`enunciado/`) ficam fora do repositório (`.gitignore`), por ser público.
+Tudo está no repositório, inclusive os PDFs do enunciado e o DW pronto (`notebook/dados/dw_aps_sao_carlos.duckdb`); só ficam de fora o `.venv`, o `node_modules`, caches e logs.
 
 ### Como rodar
 
@@ -93,7 +93,7 @@ Os PDFs da professora (`enunciado/`) ficam fora do repositório (`.gitignore`), 
 Feito: tema e fontes, modelagem, diagramas, relatório em PDF e .docx, slides, e **o notebook rodado com dados reais de 2023–2024** (saídas salvas no .ipynb).
 
 Dados reais e validação:
-- Os dados já filtrados para São Carlos estão em `notebook/dados/staging/` (~13 MB) e `notebook/dados/referencia/` (IBGE, API do CNES). Com eles presentes, o notebook **não baixa nada** e roda em ~20 s. Não apague essas pastas.
+- Os dados já filtrados para São Carlos estão em `notebook/dados/staging/` (~13 MB) e `notebook/dados/referencia/` (IBGE, API do CNES). Com eles presentes, o notebook **não baixa nada** e roda em ~20 s. Não apague essas pastas. O DW pronto também está versionado (`notebook/dados/dw_aps_sao_carlos.duckdb` e `dw/`).
 - Ambiente: `notebook/.venv` (uv). Para executar e salvar as saídas sem Jupyter aberto: `jupyter nbconvert --execute` não serve por causa do `%pip`; use um executor com nbclient que pule essa célula.
 - DW: fato_equipe 1.686, fato_internacao 39.609, fato_producao_ambulatorial 193.723 linhas; todas as chaves resolvidas.
 - Conferido contra o TabNet: AIHs de residentes em jan/2024 (1.287 lá contra 1.285 aqui, diferença = AIHs tipo 5 descartadas), abr/2023 e dez/2024 (diferença de 1 AIH); capítulo IX em jan/2024 bate exatamente.

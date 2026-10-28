@@ -29,5 +29,18 @@ O modo de edição dentro da apresentação (tecla **E**) só salva no seu compu
 | `relatorio/` | Relatório em .docx/PDF (template do ICMC) e versão em LaTeX; geradores em `relatorio/gerador/` |
 | `apresentacao/` | Slides em HTML nos dois estilos; gerador em `apresentacao/gerador/` |
 
+## Consultar o DW sem rodar nada
+
+O banco já carregado está em `notebook/dados/dw_aps_sao_carlos.duckdb` (e as tabelas em parquet em `notebook/dados/dw/`):
+
+```python
+import duckdb                                   # pip install duckdb
+con = duckdb.connect("notebook/dados/dw_aps_sao_carlos.duckdb", read_only=True)
+con.sql("SELECT * FROM fato_internacao LIMIT 5").show()
+```
+
+Para rodar o notebook: `pip install pysus duckdb pandas pyarrow requests matplotlib` e executar as células em ordem
+(usa os dados já salvos em `notebook/dados/staging/`, sem download, em ~20 s).
+
 Rodar localmente: `cd apresentacao/gerador && python build.py` regenera os slides (só precisa de Python 3).
 Os detalhes de cada parte estão no [`CLAUDE.md`](CLAUDE.md).
