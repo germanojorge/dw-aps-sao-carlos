@@ -1,6 +1,6 @@
 # Parte 2: Processos e estrelas
 
-Apresentador: Vinícius Morotti · slides 7 a 12 · cerca de 5 minutos
+Slides 7 a 12 · cerca de 5 minutos
 
 A parte 2 mostra como cada peça da pergunta virou um esquema estrela. É a parte mais “de modelagem”: grão, medidas e dimensões de cada fato, e os cuidados com o que pode e o que não pode ser somado.
 
@@ -96,7 +96,7 @@ A dimensão CBO (Classificação Brasileira de Ocupações) diz quem fez o atend
 
 **Fala de exemplo**
 
-> “A terceira estrela é a produção ambulatorial, do SIA. Aqui tem um detalhe: o arquivo público já vem meio agregado, então cada linha não é um atendimento, é tipo ‘tantos procedimentos iguais, nesse lugar, nesse mês, pra esse perfil de paciente’. Por isso o grão ficou esse combinão: estabelecimento, procedimento, mês, perfil, residência e ocupação do profissional. As medidas são quantidade e valor, apresentados e aprovados. E a taxa de aprovação a gente nunca soma: é sempre soma do aprovado dividido pela soma do apresentado. Agora o Germano mostra como essas três estrelas viram uma coisa só.”
+> “A terceira estrela é a produção ambulatorial, do SIA. Aqui tem um detalhe: o arquivo público já vem meio agregado, então cada linha não é um atendimento, é tipo ‘tantos procedimentos iguais, nesse lugar, nesse mês, pra esse perfil de paciente’. Por isso o grão ficou esse combinão: estabelecimento, procedimento, mês, perfil, residência e ocupação do profissional. As medidas são quantidade e valor, apresentados e aprovados. E a taxa de aprovação a gente nunca soma: é sempre soma do aprovado dividido pela soma do apresentado. Agora vamos ver como essas três estrelas viram uma coisa só.”
 
 ## Lembretes
 

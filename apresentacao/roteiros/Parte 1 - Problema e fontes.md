@@ -1,6 +1,6 @@
 # Parte 1: Problema e fontes
 
-Apresentador: Ivan Medina · slides 1 a 6 · cerca de 5 minutos
+Slides 1 a 6 · cerca de 5 minutos
 
 A parte 1 responde “por que esse DW existe”: qual é o problema de política pública, qual é a pergunta e de onde vêm os dados. Se essa base ficar clara, o resto da apresentação se explica sozinho.
 
@@ -16,7 +16,7 @@ Os três números resumem o modelo multidimensional. Os **3 fatos** são os trê
 
 **Fala de exemplo**
 
-> “Boa tarde, gente! A gente é o grupo do Ivan, Vinícius, Germano e Matheus, e o nosso trabalho é sobre a atenção primária à saúde aqui em São Carlos. A ideia foi montar um data warehouse que junta três coisas que normalmente ficam separadas: as equipes de saúde, os atendimentos e as internações que poderiam ter sido evitadas. No fim isso virou 3 tabelas de fatos, 9 dimensões e 5 consultas OLAP, que a gente vai mostrar. E esse mapa aí já é dado real: o contorno é do IBGE e os pontinhos são as unidades básicas cadastradas no CNES.”
+> “Boa tarde, gente! O nosso trabalho é sobre a atenção primária à saúde aqui em São Carlos. A ideia foi montar um data warehouse que junta três coisas que normalmente ficam separadas: as equipes de saúde, os atendimentos e as internações que poderiam ter sido evitadas. No fim isso virou 3 tabelas de fatos, 9 dimensões e 5 consultas OLAP, que a gente vai mostrar. E esse mapa aí já é dado real: o contorno é do IBGE e os pontinhos são as unidades básicas cadastradas no CNES.”
 
 ## Slide 2 · Roteiro
 
@@ -28,7 +28,7 @@ Os três números resumem o modelo multidimensional. Os **3 fatos** são os trê
 
 **Fala de exemplo**
 
-> “A apresentação tem quatro partes, uma pra cada um. Eu começo com o problema e as fontes de dados. O Vinícius mostra os processos de negócio e as estrelas. O Germano junta tudo na constelação e explica como a gente integrou os dados. E o Matheus fecha com as cinco consultas, já com os resultados reais.”
+> “A apresentação tem quatro partes, uma pra cada um. A primeira é o problema e as fontes de dados. A segunda mostra os processos de negócio e as estrelas. A terceira junta tudo na constelação e explica como a gente integrou os dados. E a quarta fecha com as cinco consultas, já com os resultados reais.”
 
 ## Slide 3 · A porta de entrada do SUS
 
@@ -72,7 +72,7 @@ Para comparar as três, elas precisam estar na mesma linha do tempo e no mesmo r
 
 **Fala de exemplo**
 
-> “E a pergunta que guia todo o trabalho é essa: mais atenção básica significa menos internações evitáveis? Pra responder, a gente precisa olhar três coisas juntas: a oferta, que é quantas equipes existem; o uso, que é quanto elas atendem; e o resultado, que são as ICSAP. O problema é que cada uma vem de um sistema diferente do SUS. Então o desafio do modelo é colocar as três na mesma linha do tempo, e isso o Germano e o Matheus vão mostrar mais pra frente.”
+> “E a pergunta que guia todo o trabalho é essa: mais atenção básica significa menos internações evitáveis? Pra responder, a gente precisa olhar três coisas juntas: a oferta, que é quantas equipes existem; o uso, que é quanto elas atendem; e o resultado, que são as ICSAP. O problema é que cada uma vem de um sistema diferente do SUS. Então o desafio do modelo é colocar as três na mesma linha do tempo, e isso a gente mostra mais pra frente.”
 
 ## Slide 6 · Cinco fontes, um data warehouse
 
@@ -92,7 +92,7 @@ O processo é um ETL (extração, transformação e carga). Os arquivos do DATAS
 
 **Fala de exemplo**
 
-> “De onde vem tudo isso? Cinco fontes públicas. As três principais são do DATASUS: o CNES, que tem as equipes e os estabelecimentos; o SIH, com uma linha por internação; e o SIA, com a produção ambulatorial. E duas de apoio: o IBGE pros nomes dos municípios e a API do Ministério pra nome e bairro das unidades. A gente baixou com o PySUS. Os arquivos são do estado inteiro, mês a mês, então a gente filtrou São Carlos e juntou 2023 e 2024 num banco DuckDB. E a gente conferiu com o TabNet do Ministério: os números batem. Agora o Vinícius mostra como isso virou modelo.”
+> “De onde vem tudo isso? Cinco fontes públicas. As três principais são do DATASUS: o CNES, que tem as equipes e os estabelecimentos; o SIH, com uma linha por internação; e o SIA, com a produção ambulatorial. E duas de apoio: o IBGE pros nomes dos municípios e a API do Ministério pra nome e bairro das unidades. A gente baixou com o PySUS. Os arquivos são do estado inteiro, mês a mês, então a gente filtrou São Carlos e juntou 2023 e 2024 num banco DuckDB. E a gente conferiu com o TabNet do Ministério: os números batem. Agora vamos ver como isso virou modelo.”
 
 ## Lembretes
 

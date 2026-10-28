@@ -1,6 +1,6 @@
 # Parte 3: Constelação e integração
 
-Apresentador: Germano Jorge · slides 13 a 18 · cerca de 5 minutos
+Slides 13 a 18 · cerca de 5 minutos
 
 A parte 3 explica como as três estrelas viram um DW só e por que isso permite a pergunta central. É também onde aparecem as decisões técnicas que a professora mais costuma cobrar: dimensões conformes, integração, hierarquias e os aspectos de modelagem.
 
@@ -12,7 +12,7 @@ A parte 3 explica como as três estrelas viram um DW só e por que isso permite 
 
 **Fala de exemplo**
 
-> “O Vinícius mostrou três estrelas separadas. Agora eu vou mostrar como elas viram uma coisa só, e o que a gente teve que fazer com os dados pra isso funcionar.”
+> “Na parte anterior a gente viu três estrelas separadas. Agora eu vou mostrar como elas viram uma coisa só, e o que a gente teve que fazer com os dados pra isso funcionar.”
 
 ## Slide 14 · Constelação de fatos
 
@@ -57,7 +57,7 @@ Lendo pelas linhas: uma dimensão que aparece em mais de um fato precisa ser con
 
 **Fala de exemplo**
 
-> “A mesma coisa em forma de matriz, que é a matriz de barramento: nas linhas as dimensões, nas colunas os fatos. As cinco de cima aparecem em mais de um fato, então são as conformes. E repara que só tempo e estabelecimento aparecem nos três. Isso é importante: é por elas que dá pra comparar equipes, atendimentos e internações na mesma análise, que é o que o Matheus vai fazer no drill-across.”
+> “A mesma coisa em forma de matriz, que é a matriz de barramento: nas linhas as dimensões, nas colunas os fatos. As cinco de cima aparecem em mais de um fato, então são as conformes. E repara que só tempo e estabelecimento aparecem nos três. Isso é importante: é por elas que dá pra comparar equipes, atendimentos e internações na mesma análise, que é o que a consulta 5, o drill-across, vai fazer.”
 
 ## Slide 16 · Mesmo dado, códigos diferentes
 
@@ -114,7 +114,7 @@ O exemplo da idade mostra por que não dá para usar o campo direto: no SIH, “
 
 **Fala de exemplo**
 
-> “Pra fechar a minha parte, as decisões de modelagem. Toda dimensão tem chave artificial e um membro zero, ‘não informado’, pra nenhum fato se perder quando falta dado. Tem a bugiganga e as dimensões degeneradas que o Vinícius mostrou, e o fato sem fato das equipes. A mini-dimensão de perfil existe porque o paciente do SUS não tem identificação pública, então o que a gente tem é sexo e faixa etária. E uma que mexe muito nos números: demanda é diferente de oferta. Uns 6,8 mil internados em São Carlos moram em outra cidade, então quando a pergunta é sobre a população, a gente filtra por onde a pessoa mora. Agora o Matheus mostra as consultas.”
+> “Pra fechar a minha parte, as decisões de modelagem. Toda dimensão tem chave artificial e um membro zero, ‘não informado’, pra nenhum fato se perder quando falta dado. Tem a bugiganga e as dimensões degeneradas que apareceram na parte 2, e o fato sem fato das equipes. A mini-dimensão de perfil existe porque o paciente do SUS não tem identificação pública, então o que a gente tem é sexo e faixa etária. E uma que mexe muito nos números: demanda é diferente de oferta. Uns 6,8 mil internados em São Carlos moram em outra cidade, então quando a pergunta é sobre a população, a gente filtra por onde a pessoa mora. Agora vamos para as consultas.”
 
 ## Lembretes
 

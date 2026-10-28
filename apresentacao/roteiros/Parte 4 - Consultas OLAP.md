@@ -1,6 +1,6 @@
 # Parte 4: Consultas OLAP
 
-Apresentador: Matheus Rodrigues · slides 19 a 26 · cerca de 5 minutos
+Slides 19 a 26 · cerca de 5 minutos
 
 A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, todas com os dados reais de 2023 e 2024. São 8 slides em 5 minutos, então o ritmo é: nome da operação, o que ela faz, o achado principal, próximo slide.
 
