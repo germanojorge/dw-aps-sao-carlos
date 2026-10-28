@@ -68,6 +68,11 @@ apresentacao/   slides em HTML (20 min, 4 partes): apresentacao_cobalto.html e a
 apresentacao/gerador  build.py junta slides.html + base.css + tema_*.css + deck.js; `python build.py` regenera os dois
 ```
 
+Repositório público: https://github.com/germanojorge/dw-aps-sao-carlos (branch `main`). A cada push que mexe em `apresentacao/`,
+o workflow `.github/workflows/slides.yml` roda o `build.py` e publica em https://germanojorge.github.io/dw-aps-sao-carlos/
+(página inicial em `apresentacao/site/index.html`). O grupo edita o `slides.html` pelo site do GitHub; o passo a passo está no `README.md`.
+Os PDFs da professora (`enunciado/`) ficam fora do repositório (`.gitignore`), por ser público.
+
 ### Como rodar
 
 - **Notebook:** `pip install pysus duckdb pandas pyarrow requests matplotlib` (ou use `notebook/.venv`). Já vem com `MODO_TESTE = False` e com os dados de 2023–2024 em `dados/staging`, então roda sem baixar nada. Saída: `dados/dw_aps_sao_carlos.duckdb` + parquet em `dados/dw/`.
