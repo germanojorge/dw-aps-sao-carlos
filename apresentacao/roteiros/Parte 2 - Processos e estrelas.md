@@ -36,11 +36,11 @@ A parte 2 mostra como cada peça da pergunta virou um esquema estrela. É a part
 
 ## Slide 9 · Estrela 1: oferta de equipes
 
-**O que o slide mostra.** O esquema estrela de `fato_equipe` com três dimensões (tempo, tipo de equipe, estabelecimento).
+**O que o slide mostra.** O esquema estrela de `fato_equipe` com três dimensões (tempo, tipo de equipe, estabelecimento). Em cada dimensão, a primeira linha é a chave artificial (**PK** `sk_*`); no fato, à esquerda, as chaves estrangeiras (**FK**) para cada dimensão e, à direita, a dimensão degenerada (**DD**) e as medidas (**M**). As três estrelas seguem a mesma legenda.
 
 **A aula.** O primeiro passo de qualquer estrela é definir o **grão**: o que uma linha da tabela de fatos representa. Aqui, uma linha é “uma equipe ativa, num estabelecimento, num mês”. É um **snapshot periódico**: uma fotografia mensal de quais equipes existem.
 
-Essa tabela não tem nenhuma medida numérica, por isso é uma **tabela de fatos sem fato** (factless). O número de equipes sai da contagem de linhas, `COUNT(*)`. O identificador da equipe (`IDEQUIPE`, no CNES) fica dentro do próprio fato como **dimensão degenerada**: é um código sem outros atributos, que não justifica uma tabela própria, mas serve para contar equipes distintas e rastrear a origem.
+Essa tabela não tem nenhuma medida numérica, por isso é uma **tabela de fatos sem fato** (factless). O número de equipes sai da contagem de linhas, `COUNT(*)`. A chave primária do fato é a combinação das FKs com a dimensão degenerada. As chaves `sk_*` são artificiais: inteiros gerados na carga, independentes dos códigos das fontes, com o valor 0 reservado para “Não informado”. O identificador da equipe (`IDEQUIPE`, no CNES) fica dentro do próprio fato como **dimensão degenerada**: é um código sem outros atributos, que não justifica uma tabela própria, mas serve para contar equipes distintas e rastrear a origem.
 
 A dimensão tipo de equipe tem a hierarquia `tipo_equipe ≤ categoria_equipe` (Saúde da Família, Atenção Primária, Saúde Bucal, Multiprofissional, Outras). Os códigos de tipo foram conferidos com a tabela oficial do CNES.
 

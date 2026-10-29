@@ -73,22 +73,29 @@ FATOS = {
                                     ("M", "valor_apresentado"), ("M", "valor_aprovado")]),
 }
 
+# chave artificial de cada dimensão (PK na dimensão, FK no fato)
+SK = {"dim_tempo": "sk_tempo", "dim_estabelecimento": "sk_estabelecimento", "dim_tipo_equipe": "sk_tipo_equipe",
+      "dim_procedimento": "sk_procedimento", "dim_diagnostico": "sk_diagnostico", "dim_perfil_paciente": "sk_perfil",
+      "dim_localidade": "sk_localidade", "dim_junk_internacao": "sk_junk", "dim_cbo": "sk_cbo"}
+FK_NOS_FATOS = {"dim_localidade": "sk_localidade_residencia"}   # nome da FK quando difere da PK
+
 def caixa_dim(nome, cx, cy, extra=""):
     attrs = DIMS[nome]
     w, lh = max(320, int(len(nome) * 17.5 + 44)), 34
-    h = 56 + lh * len(attrs)
+    h = 56 + lh * (len(attrs) + 1)
     x, y = cx - w / 2, cy - h / 2
     s = f'<g class="st-dim {extra}"><rect x="{x:.0f}" y="{y:.0f}" width="{w}" height="{h}" rx="6"/>'
     s += f'<text class="st-dname" x="{cx:.0f}" y="{y + 38:.0f}">{nome}</text>'
+    s += f'<text class="st-attr st-pk" x="{cx:.0f}" y="{y + 38 + lh:.0f}"><tspan class="st-tag">PK</tspan> {SK[nome]}</text>'
     for i, a in enumerate(attrs):
-        s += f'<text class="st-attr" x="{cx:.0f}" y="{y + 38 + lh * (i + 1):.0f}">{a}</text>'
+        s += f'<text class="st-attr" x="{cx:.0f}" y="{y + 38 + lh * (i + 2):.0f}">{a}</text>'
     return s + "</g>"
 
 def estrela(fato):
     dims, medidas = FATOS[fato]
-    W, H = 1640, 820
+    W, H = 1840, 880
     cx, cy = W / 2, H / 2
-    rx, ry = 620, 300
+    rx, ry = 730, 320
     n = len(dims)
     pos = []
     for i in range(n):
@@ -96,13 +103,21 @@ def estrela(fato):
         pos.append((cx + rx * math.cos(ang), cy + ry * math.sin(ang)))
     linhas = "".join(f'<line class="st-line" x1="{cx:.0f}" y1="{cy:.0f}" x2="{x:.0f}" y2="{y:.0f}" style="--i:{i}"/>'
                      for i, (x, y) in enumerate(pos))
-    fw, lh = max(420, int(len(fato) * 19.5 + 60)), 38
-    fh = 66 + lh * len(medidas)
+    # duas colunas, para a caixa não ficar alta: FKs à esquerda, dimensão degenerada e medidas à direita
+    fks = [FK_NOS_FATOS.get(d, SK[d]) for d in dims]
+    lh_fk, lh = 31, 38
+    col_fk = max(len(k) for k in fks) * 13.2 + 56
+    col_m = max(len(m) for _, m in medidas) * 15.6 + 56
+    fw = int(max(420, len(fato) * 19.5 + 60, 30 + col_fk + col_m + 20))
+    fh = 66 + max(lh_fk * len(fks), lh * len(medidas))
     fx, fy = cx - fw / 2, cy - fh / 2
     f = f'<g class="st-fact"><rect x="{fx:.0f}" y="{fy:.0f}" width="{fw}" height="{fh}" rx="8"/>'
     f += f'<text class="st-fname" x="{cx:.0f}" y="{fy + 44:.0f}">{fato}</text>'
+    for i, k in enumerate(fks):
+        f += (f'<text class="st-meas st-fk" x="{fx + 30:.0f}" y="{fy + 44 + lh_fk * (i + 1):.0f}">'
+              f'<tspan class="st-tag">FK</tspan>  {k}</text>')
     for i, (tag, m) in enumerate(medidas):
-        f += (f'<text class="st-meas" x="{fx + 30:.0f}" y="{fy + 44 + lh * (i + 1):.0f}">'
+        f += (f'<text class="st-meas" x="{fx + 30 + col_fk:.0f}" y="{fy + 44 + lh * (i + 1):.0f}">'
               f'<tspan class="st-tag">{tag}</tspan>  {m}</text>')
     f += "</g>"
     caixas = "".join(caixa_dim(d, x, y) for d, (x, y) in zip(dims, pos))

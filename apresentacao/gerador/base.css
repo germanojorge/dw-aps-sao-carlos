@@ -153,7 +153,7 @@
 
 /* === ESQUEMAS ESTRELA === */
 .st-head { left: 120px; top: 110px; display: flex; flex-direction: column; gap: 14px; }
-.st-svg { left: 250px; top: 215px; width: 1420px; height: 710px; }
+.st-svg { left: 120px; top: 215px; width: 1680px; height: 750px; }
 .estrela { width: 100%; height: 100%; }
 .st-line { stroke: var(--line); stroke-width: 2.5; stroke-dasharray: 900; stroke-dashoffset: 900;
   transition: stroke-dashoffset 1s ease; transition-delay: calc(.4s + var(--i) * .08s); }
@@ -165,6 +165,8 @@
 .st-fname { font: 500 31px var(--fm); fill: var(--hit-fg); text-anchor: middle; }
 .st-meas { font: 400 26px var(--fm); fill: var(--hit-fg); }
 .st-tag { opacity: .6; font-size: 20px; }
+.st-fk { font-size: 22px; }
+.st-pk { font-family: var(--fm); font-size: 22px; fill: var(--acc); opacity: 1; }
 .callouts { left: 120px; right: 120px; bottom: 112px; display: flex; flex-wrap: wrap; gap: 14px; }
 .co { font: 400 23px var(--fm); padding: 10px 20px; border: 1.5px solid var(--acc); border-radius: var(--pill); color: var(--ink); background: var(--bg); }
 
