@@ -63,7 +63,7 @@ DIMS = {
 }
 FATOS = {
     "fato_equipe": (["dim_tempo", "dim_estabelecimento", "dim_tipo_equipe"],
-                    [("DD", "id_equipe"), ("·", "COUNT(*)")]),
+                    [("DD", "id_equipe")]),
     "fato_internacao": (["dim_tempo", "dim_estabelecimento", "dim_procedimento", "dim_diagnostico",
                          "dim_perfil_paciente", "dim_localidade", "dim_junk_internacao"],
                         [("DD", "n_aih"), ("M", "qtd_internacoes"), ("M", "dias_permanencia"), ("M", "valor_total")]),
