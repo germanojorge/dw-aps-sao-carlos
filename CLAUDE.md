@@ -46,7 +46,7 @@ Fontes auxiliares: API de localidades do IBGE (nomes e regiões dos municípios)
 
 - Download pelo **PySUS 2.x** (`pysus.cnes/sih/sia(state="SP", year=, month=, group=)`; devolve caminhos de parquet). Se o catálogo falhar, usar `source="origin", origin="FTP"`. Os arquivos são **estaduais e mensais**, e o notebook filtra São Carlos lendo em lotes.
 - São Carlos: código IBGE **354890** (6 dígitos, padrão DATASUS) ou 3548906 (7 dígitos). População (Censo 2022): **254.857**, confirmada na API do IBGE (agregado 9514) em 28/10/2026.
-- A API de Dados Abertos do CNES lista 36 estabelecimentos tipo 02 em São Carlos (out/2026), mas várias coordenadas coincidem: a geolocalização da API é imprecisa.
+- A API de Dados Abertos do CNES lista 36 estabelecimentos tipo 02 em São Carlos (out/2026), sem duplicatas, mas várias unidades diferentes aparecem a 5–25 m uma da outra (a USF Água Vermelha, do distrito, cai dentro da cidade): a geolocalização da API é imprecisa.
 - Integrações já tratadas: sexo (SIH 1/3 contra SIA M/F), idade (SIH valor + COD_IDADE), município com 6 ou 7 dígitos, competência, CNES com 7 dígitos, tipo de unidade texto contra inteiro.
 - Cuidados: AIH de continuação (IDENT = 5) é descartada; equipes desativadas são filtradas por DT_DESAT; consultas de demanda filtram por **residência**, as de oferta pelo município do estabelecimento.
 - Limitação: desde o e-SUS APS, a produção da atenção básica vai para o **SISAB**, não para o SIA, então o SIA subestima a APS.
@@ -108,7 +108,7 @@ Achados que afetam o texto do trabalho:
 - Slides: as 5 consultas usam gráficos com os dados reais (`apresentacao/gerador/exportar_consultas.py` → `dados/consultas.json` → `graficos.py`).
 
 Pendências antes da entrega:
-- [ ] Capa: nomes e nº USP dos integrantes (marcados com `[Nome]`/`[Nº USP]` no `gerar.js`).
+- [x] Capa: nomes e nº USP dos integrantes preenchidos em 29/10/2026 no `gerar_latex.py` (PDF do LaTeX regenerado) e no `gerar.js` (o .docx ainda não foi regenerado).
 - [ ] Confirmar se a **notação dos diagramas** (estilo Kimball) é a da aula; se não for, refazer em `esquemas/fontes/gen.py`.
 - [x] Relatório atualizado (28/10/2026): resultados reais e captura do notebook em cada consulta, carga e validação na Seção 1.5, achado do SISAB na 1.6. As edições manuais da capa (título "Atenção Primária a Saúde", data 29/10/2026, sem a linha "Curso") foram levadas para o `gerar.js`.
 - [x] Apresentação: estilo escolhido = cobalto (o território foi removido em 28/10/2026; está no histórico do git). Nomes já em `PARTES` (`apresentacao/gerador/deck.js`): Ivan Sardon, Vinícius Morotti, Germano Jorge, Matheus Rodrigues; por decisão do grupo, os nomes aparecem só na capa. Notas do apresentador: tecla N.

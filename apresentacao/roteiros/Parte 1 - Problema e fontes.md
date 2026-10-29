@@ -52,7 +52,7 @@ Por isso a taxa de ICSAP é o indicador clássico de efetividade da atenção b�
 
 **A aula.** Todo DW precisa de um recorte. O nosso é o município de São Carlos, código IBGE 3548906 (ou 354890 no padrão de 6 dígitos do DATASUS). A população do Censo 2022, conferida na API do IBGE, é 254.857. Ela é o denominador de duas medidas derivadas: a cobertura estimada de Saúde da Família e a taxa de ICSAP por 10 mil habitantes.
 
-Os 36 estabelecimentos são os do tipo 02 (centro de saúde / unidade básica) na API de Dados Abertos do Ministério. Os pontos do mapa usam as coordenadas dessa API, e várias delas coincidem: a geolocalização da fonte é imprecisa.
+Os 36 estabelecimentos são os do tipo 02 (centro de saúde / unidade básica) na API de Dados Abertos do Ministério. Os pontos do mapa usam as coordenadas dessa API. Não há duplicatas (são 36 códigos CNES diferentes), mas várias unidades diferentes aparecem quase no mesmo lugar, a 5 a 25 metros uma da outra, e no mapa os pontos se sobrepõem. Há erros claros: a USF Água Vermelha, que fica no distrito, aparece dentro da cidade. A geolocalização da fonte é imprecisa.
 
 **Como se liga ao trabalho.** Por causa disso, o DW não depende das coordenadas: a dimensão estabelecimento guarda o código CNES, o tipo de unidade e o bairro, e é por eles que se agrega. Isso também mostra uma atitude que vale a pena dizer em voz alta: olhar a qualidade da fonte antes de confiar nela.
 

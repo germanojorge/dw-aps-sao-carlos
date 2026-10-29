@@ -50,13 +50,13 @@
 </section>
 
 <!-- 04 · SÃO CARLOS NO MAPA -->
-<section class="slide s-mapa" data-part="1" data-notes="Recorte: município de São Carlos. População do Censo 2022 confirmada na API do IBGE: 254.857 habitantes. A API de Dados Abertos do Ministério da Saúde lista 36 estabelecimentos do tipo 02 (centro de saúde / unidade básica). Curiosidade: várias coordenadas da API coincidem, então a geolocalização da fonte é imprecisa. Por isso o DW usa bairro e código, não as coordenadas, para agregar.">
+<section class="slide s-mapa" data-part="1" data-notes="Recorte: município de São Carlos. População do Censo 2022 confirmada na API do IBGE: 254.857 habitantes. A API de Dados Abertos do Ministério da Saúde lista 36 estabelecimentos do tipo 02 (centro de saúde / unidade básica). Curiosidade: não há duplicatas (36 códigos CNES diferentes), mas várias unidades diferentes aparecem a 5 a 25 metros uma da outra, e a USF Água Vermelha, que fica no distrito, aparece dentro da cidade. A geolocalização da fonte é imprecisa. Por isso o DW usa bairro e código, não as coordenadas, para agregar.">
   <div class="mapa-big rv" style="--d:1">{{MAPA}}</div>
   <div class="mapa-zoomwrap rv" style="--d:3">{{MAPA_ZOOM}}<span class="cap">área urbana</span></div>
   <div class="stats">
     <div class="stat rv" style="--d:2"><span class="num" data-count="254857">254.857</span><span class="lbl">habitantes · Censo 2022</span></div>
     <div class="stat rv" style="--d:4"><span class="num" data-count="36">36</span><span class="lbl">UBS / USF no CNES</span></div>
-    <div class="nota rv" style="--d:5">pontos = coordenadas da API do CNES; várias coincidem</div>
+    <div class="nota rv" style="--d:5">pontos = coordenadas da API do CNES; várias unidades diferentes aparecem quase no mesmo lugar</div>
   </div>
 </section>
 

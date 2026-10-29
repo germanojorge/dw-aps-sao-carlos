@@ -58,7 +58,7 @@ def mapa():
 
 def mapa_zoom():
     w, h = ZX1 - ZX0, ZY1 - ZY0
-    dots = "".join(f'<circle class="ubs" cx="{x:.1f}" cy="{y:.1f}" r="{w/70:.1f}" style="--i:{i}"/>' for i, (x, y) in enumerate(pts))
+    dots = "".join(f'<circle class="ubs" cx="{x:.1f}" cy="{y:.1f}" r="{w/110:.1f}" style="--i:{i}"/>' for i, (x, y) in enumerate(pts))
     return (f'<svg class="mapa-zoom" viewBox="{ZX0:.1f} {ZY0:.1f} {w:.1f} {h:.1f}" preserveAspectRatio="xMidYMid slice">'
             f'<path class="mun" d="{PATH_SC}"/>{dots}</svg>')
 

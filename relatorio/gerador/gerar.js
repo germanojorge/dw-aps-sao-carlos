@@ -148,7 +148,8 @@ function tabelaIntegrantes() {
     children: [new Paragraph({ spacing: { after: 0 }, children: [new TextRun({ text: t, font: SERIF, size: 22, bold: cab })] })],
   });
   const rows = [new TableRow({ children: [cel("Integrante", 0, true), cel("Nº USP", 1, true)] })];
-  for (let k = 0; k < 4; k++) rows.push(new TableRow({ children: [cel("[Nome]", 0), cel("[Nº USP]", 1)] }));
+  const INTEGRANTES = [["Ivan Sardon Medina", "[Nº USP]"], ["Vinícius Morotti", "[Nº USP]"], ["Germano Antonio Zani Jorge", "[Nº USP]"], ["Matheus Rodrigues", "[Nº USP]"]];
+  for (const [nome, nusp] of INTEGRANTES) rows.push(new TableRow({ children: [cel(nome, 0), cel(nusp, 1)] }));
   return new Table({ width: { size: 8506, type: WidthType.DXA }, columnWidths: w, rows, alignment: AlignmentType.CENTER });
 }
 const capa = [
