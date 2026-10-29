@@ -1,10 +1,10 @@
 # Parte 4: Consultas OLAP
 
-Slides 19 a 26 · cerca de 5 minutos
+Slides 18 a 24 · cerca de 5 minutos
 
 A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, todas com os dados reais de 2023 e 2024. São 8 slides em 5 minutos, então o ritmo é: nome da operação, o que ela faz, o achado principal, próximo slide.
 
-## Slide 19 · Abertura: cinco consultas OLAP
+## Slide 18 · Abertura: cinco consultas OLAP
 
 **O que o slide mostra.** O divisor da parte 4 e as cinco operações.
 
@@ -22,7 +22,7 @@ A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, t
 
 > “Agora a parte boa: o DW funcionando. São cinco consultas, uma pra cada operação OLAP: roll-up, drill-down, slice and dice, pivot e drill-across. E tudo que eu vou mostrar é dado real de 2023 e 2024.”
 
-## Slide 20 · Consulta 1: roll-up
+## Slide 19 · Consulta 1: roll-up
 
 **O que o slide mostra.** As ICSAP de residentes em três níveis de tempo: 24 barras mensais, 8 trimestrais e 2 anuais.
 
@@ -41,7 +41,7 @@ A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, t
 
 > “A primeira é um roll-up no tempo. A gente pega as internações evitáveis de quem mora em São Carlos mês a mês e vai subindo: trimestre, depois ano. Foram 5.255 em dois anos, 16% de todas as internações de moradores. No mês oscila bastante, de 167 a 291, até porque o mês aqui é o de processamento da AIH. Mas quando sobe pra trimestre fica bem estável, e no ano dá pra ver uma queda de uns 5%, de 2.700 pra 2.555.”
 
-## Slide 21 · Consulta 2: drill-down
+## Slide 20 · Consulta 2: drill-down
 
 **O que o slide mostra.** Três colunas de barras: os grupos do SIGTAP, os subgrupos do grupo 02 e os procedimentos do subgrupo 0202. A barra destacada é o caminho escolhido em cada nível.
 
@@ -60,7 +60,7 @@ A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, t
 
 > “A segunda é um drill-down, o contrário: começa no geral e vai descendo. Aqui é a produção ambulatorial dos estabelecimentos de São Carlos. No nível de grupo, o que mais tem é procedimento diagnóstico, 1,8 milhão. Só que em dinheiro quem ganha é o grupo de procedimentos clínicos, uns 31 milhões de reais. Aí a gente desce no diagnóstico: o subgrupo é laboratório clínico, e no procedimento aparecem hemograma e creatinina, que são aqueles exames de rotina que todo mundo já fez.”
 
-## Slide 22 · Consulta 3: slice and dice
+## Slide 21 · Consulta 3: slice and dice
 
 **O que o slide mostra.** À esquerda, um cubo com a fatia escolhida em destaque; à direita, as ICSAP de idosos em 2024 por causa e sexo, com a média de dias.
 
@@ -79,7 +79,7 @@ A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, t
 
 > “A terceira é o slice and dice. Pensa no cubo: o slice corta uma fatia, só o ano de 2024. O dice recorta um pedaço dessa fatia: só idosos e só internações evitáveis. Deu 1.358 internações. O que mais interna idoso são as doenças cerebrovasculares, tipo AVC, 170 homens e 154 mulheres, e depois insuficiência cardíaca. E a última coluna é a média de dias: doença pulmonar fica 9 dias e meio internada. São justamente coisas que a atenção básica devia segurar.”
 
-## Slide 23 · Consulta 4: pivot
+## Slide 22 · Consulta 4: pivot
 
 **O que o slide mostra.** Dois mapas de calor com os mesmos números: à esquerda, causas nas linhas e ciclo de vida nas colunas; à direita, a mesma tabela girada. Quanto mais escura a célula, maior o valor.
 
@@ -96,52 +96,45 @@ A parte 4 é o DW funcionando: cinco consultas, uma para cada operação OLAP, t
 
 > “A quarta é o pivot. É a mesma tabela, só que girada, e cada jeito responde uma pergunta diferente. Olhando por causa, dá pra ver que doença circulatória é coisa de adulto e idoso: 621 idosos com doença cerebrovascular. Girando e olhando por fase da vida, aparece outra coisa: nas crianças o que domina é doença pulmonar, 329. Então o mesmo dado serve tanto pra um programa de saúde do idoso quanto pra uma linha de cuidado pra asma infantil, por exemplo.”
 
-## Slide 24 · Consulta 5: drill-across
+## Slide 23 · Consulta 5: drill-across
 
-**O que o slide mostra.** Três painéis empilhados, um por fato, com o mesmo eixo de meses: cobertura de Saúde da Família, produção APS e ICSAP por 10 mil habitantes.
+**O que o slide mostra.** Dois painéis empilhados, com o mesmo eixo de meses: a cobertura estimada (`fato_equipe`), em duas linhas, só eSF e eSF + eAP, e a ICSAP por 10 mil habitantes (`fato_internacao`). Uma nota embaixo lembra que a produção das UBS não está no SIA.
 
-**A aula.** O drill-across combina medidas de **fatos diferentes**. A regra é não juntar os fatos linha a linha, porque eles têm grãos diferentes e a junção multiplicaria linhas. Em vez disso, cada fato é agregado sozinho até o grão comum (o mês) e só então os três resultados são juntados pela dimensão conforme `ano_mes`. Isso só é possível por causa da constelação.
+**A aula.** O drill-across combina medidas de **fatos diferentes**. A regra é não juntar os fatos linha a linha, porque eles têm grãos diferentes e a junção multiplicaria linhas. Em vez disso, cada fato é agregado sozinho até o grão comum (o mês) e só então os resultados são juntados pela dimensão conforme `ano_mes`. Isso só é possível por causa da constelação.
 
-- **Oferta** (`fato_equipe`): contagem de equipes de Saúde da Família. Cobertura estimada = equipes × 3.450 ÷ 254.857, sendo 3.450 o parâmetro clássico de pessoas por equipe.
-- **Uso** (`fato_producao_ambulatorial`): soma da produção aprovada nos estabelecimentos de atenção primária.
+- **Oferta** (`fato_equipe`): contagem de equipes por mês. Cobertura estimada = equipes × 3.450 ÷ 254.857, sendo 3.450 o parâmetro clássico de pessoas por equipe de Saúde da Família. A linha de baixo conta só as eSF (as 23 USF). A de cima soma as eAP das UBS tradicionais como se cada uma fosse uma equipe inteira; como a eAP é menor, essa linha é um **teto**. A cobertura real da atenção básica fica entre as duas.
+- **Uso** (`fato_producao_ambulatorial`): a consulta do relatório também soma a produção aprovada nos estabelecimentos de atenção primária, mas o resultado é zero (veja abaixo), por isso esse painel saiu do slide.
 - **Resultado** (`fato_internacao`): ICSAP de residentes. Taxa = ICSAP ÷ 254.857 × 10.000.
 
 **Os resultados.**
 
 - **23 equipes** de Saúde da Família em todos os 24 meses, ou seja, cobertura estimada constante de **31,1%**.
-- A produção das UBS no SIA é **zero em todos os meses**: desde o e-SUS APS, ela é registrada no **SISAB**, outro sistema. O painel mostra o zero em vez de esconder.
+- Com as **11 a 13 eAP**, o teto oscila entre **46% e 48,7%** e termina em 46,0%. É uma variação pequena, de uma ou duas equipes.
+- A produção das UBS no SIA é **zero em todos os meses**: desde o e-SUS APS, ela é registrada no **SISAB**, outro sistema. Por isso o slide mostra só oferta e internações, e a nota embaixo explica.
 - A taxa de ICSAP variou entre **6,55 e 11,42 por 10 mil habitantes** e terminou 2024 em **8,40**.
 
 **Como se liga ao trabalho.** É a resposta (honesta) à pergunta central. O DW consegue fazer a comparação, mas os dados de 2023–2024 não permitem concluir nada: a oferta não variou, então não há o que relacionar com as internações. Esse é um achado real do trabalho, e vale apresentar como achado, não como falha.
 
 **Fala de exemplo**
 
-> “E a quinta é a pergunta central, o drill-across. Aqui a gente pega os três fatos, agrega cada um sozinho por mês e junta pelo mês, que é a dimensão conforme. E vieram duas surpresas. Primeiro: São Carlos teve 23 equipes de Saúde da Família todo santo mês, então a cobertura ficou parada em 31%. Segundo: a produção das UBS no SIA é zero, porque desde o e-SUS ela vai pra outro sistema, o SISAB. A gente preferiu mostrar o zero do que esconder. As internações evitáveis ficaram entre 6,5 e 11,4 por 10 mil habitantes. Então o DW faz a pergunta, mas com a oferta parada ainda não dá pra responder.”
+> “E a quinta é a pergunta central, o drill-across. Aqui a gente pega fatos diferentes, agrega cada um sozinho por mês e junta pelo mês, que é a dimensão conforme. E vieram duas surpresas. Primeiro: São Carlos teve 23 equipes de Saúde da Família todo santo mês, então a cobertura de Saúde da Família ficou parada em 31%. Se a gente somar as UBS tradicionais, contando cada uma como equipe inteira, o máximo chega a uns 46 a 49%; a cobertura real fica entre as duas linhas. Segundo: a produção das UBS no SIA é zero, porque desde o e-SUS ela vai pra outro sistema, o SISAB. Por isso o gráfico mostra só a oferta e as internações. As internações evitáveis ficaram entre 6,5 e 11,4 por 10 mil habitantes. Então o DW faz a pergunta, mas com a oferta parada ainda não dá pra responder.”
 
-## Slide 25 · O que o modelo não resolve
-
-**O que o slide mostra.** Quatro limitações e o próximo passo.
-
-**A aula.** Todo modelo tem limites, e dizê-los antes que perguntem é sinal de que o grupo entendeu os dados.
-
-- **SISAB ≠ SIA**: a produção das UBS não está no SIA. Os dados reais confirmaram: zero em 2023 e 2024.
-- **Cobertura estimada**: usa o parâmetro de 3.450 pessoas por equipe e conta só equipes de Saúde da Família. A metodologia oficial de cobertura mudou ao longo dos anos.
-- **Competência**: o mês do DW é o de processamento, não a data da internação. Uma internação de dezembro pode aparecer em janeiro.
-- **Coordenadas**: as da API do CNES são imprecisas.
-
-**Como se liga ao trabalho.** O próximo passo sai direto dos limites: incluir o SISAB como fonte e usar mais anos, para que a oferta tenha variação. Isso combina com a parte 2 da disciplina, a implementação do DW.
-
-**Fala de exemplo**
-
-> “E o que o nosso modelo não resolve? A principal é essa do SISAB: a produção das UBS não tá no SIA. A cobertura é uma estimativa por parâmetro e, nesses dois anos, não mudou. O mês que a gente usa é o de processamento, não o dia da internação. E as coordenadas da API são ruins. O próximo passo natural é colocar o SISAB e mais anos de dados.”
-
-## Slide 26 · Obrigado
+## Slide 24 · Obrigado
 
 **O que o slide mostra.** O encerramento e o convite para perguntas.
 
 **A aula.** O fechamento retoma a frase do início: três processos, uma constelação e uma pergunta de política pública para São Carlos.
 
 **Como se liga ao trabalho.** Na hora das perguntas, cada um responde sobre a própria parte, mas todos devem saber explicar a pergunta central, a constelação e o achado do SISAB.
+
+**Limites, para as perguntas.** Não há mais um slide só para eles, mas a banca pode perguntar. Dizê-los com clareza mostra que o grupo entendeu os dados:
+
+- **SISAB ≠ SIA**: a produção das UBS não está no SIA. Os dados reais confirmaram: zero em 2023 e 2024.
+- **Cobertura estimada**: usa o parâmetro de 3.450 pessoas por equipe e conta só equipes de Saúde da Família. A metodologia oficial de cobertura mudou ao longo dos anos.
+- **Competência**: o mês do DW é o de processamento, não a data da internação. Uma internação de dezembro pode aparecer em janeiro.
+- **Coordenadas**: as da API do CNES são imprecisas.
+
+O próximo passo sai direto daí: incluir o SISAB como fonte e usar mais anos, para que a oferta tenha variação.
 
 **Fala de exemplo**
 

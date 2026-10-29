@@ -12,11 +12,11 @@ A parte 1 responde “por que esse DW existe”: qual é o problema de política
 
 Os três números resumem o modelo multidimensional. Os **3 fatos** são os três processos que medimos: equipes, internações e produção ambulatorial. As **9 dimensões** são os ângulos pelos quais olhamos esses fatos (tempo, estabelecimento, diagnóstico etc.). As **5 consultas** são as perguntas que o DW responde, uma para cada operação OLAP pedida no enunciado.
 
-**Como se liga ao trabalho.** O mapa não é decoração: o contorno é o limite oficial do município, da API de malhas do IBGE, e os pontos são as UBS e USF cadastradas no CNES. Já na capa aparecem duas das nossas fontes.
+**Como se liga ao trabalho.** O mapa não é decoração: o contorno é o limite oficial do município, da API de malhas do IBGE,. Só o contorno, sem as unidades, porque as coordenadas da API do CNES são imprecisas (veja o slide 4).
 
 **Fala de exemplo**
 
-> “Boa tarde, gente! O nosso trabalho é sobre a atenção primária à saúde aqui em São Carlos. A ideia foi montar um data warehouse que junta três coisas que normalmente ficam separadas: as equipes de saúde, os atendimentos e as internações que poderiam ter sido evitadas. No fim isso virou 3 tabelas de fatos, 9 dimensões e 5 consultas OLAP, que a gente vai mostrar. E esse mapa aí já é dado real: o contorno é do IBGE e os pontinhos são as unidades básicas cadastradas no CNES.”
+> “Boa tarde, gente! O nosso trabalho é sobre a atenção primária à saúde aqui em São Carlos. A ideia foi montar um data warehouse que junta três coisas que normalmente ficam separadas: as equipes de saúde, os atendimentos e as internações que poderiam ter sido evitadas. No fim isso virou 3 tabelas de fatos, 9 dimensões e 5 consultas OLAP, que a gente vai mostrar. E esse contorno aí é o limite oficial do município, que vem do IBGE.”
 
 ## Slide 2 · Roteiro
 
@@ -46,19 +46,25 @@ Por isso a taxa de ICSAP é o indicador clássico de efetividade da atenção b�
 
 > “Pra entender o problema: a atenção básica é a porta de entrada do SUS, são as UBS e as unidades de Saúde da Família. Quando ela funciona, coisas como hipertensão, diabetes e asma são controladas ali no posto mesmo. Quando ela falha, a pessoa piora e acaba internada. Essas internações têm nome: ICSAP, internações por condições sensíveis à atenção primária. Tem uma lista oficial do Ministério, a Portaria 221 de 2008, com 19 grupos de doenças. E é por isso que ela é o indicador que a gente usa pra medir se a atenção básica tá funcionando.”
 
-## Slide 4 · São Carlos no mapa
+## Slide 4 · A rede de atenção primária
 
-**O que o slide mostra.** O mapa do município, o zoom na área urbana e dois números: 254.857 habitantes e 36 UBS/USF no CNES.
+**O que o slide mostra.** 36 quadrados, um por unidade de atenção primária de São Carlos, divididos pelo modelo de equipe: 23 USF (cheios), 11 UBS tradicionais (contorno) e 2 sem eSF nem eAP (tracejados). Ao lado, 254.857 habitantes e 36 unidades.
 
-**A aula.** Todo DW precisa de um recorte. O nosso é o município de São Carlos, código IBGE 3548906 (ou 354890 no padrão de 6 dígitos do DATASUS). A população do Censo 2022, conferida na API do IBGE, é 254.857. Ela é o denominador de duas medidas derivadas: a cobertura estimada de Saúde da Família e a taxa de ICSAP por 10 mil habitantes.
+**A aula.** Todo DW precisa de um recorte. O nosso é o município de São Carlos, código IBGE 3548906 (ou 354890 no padrão de 6 dígitos do DATASUS). A população do Censo 2022, conferida na API do IBGE, é 254.857. Ela é o denominador de duas medidas derivadas: a cobertura estimada e a taxa de ICSAP por 10 mil habitantes.
 
-Os 36 estabelecimentos são os do tipo 02 (centro de saúde / unidade básica) na API de Dados Abertos do Ministério. Os pontos do mapa usam as coordenadas dessa API. Não há duplicatas (são 36 códigos CNES diferentes), mas várias unidades diferentes aparecem quase no mesmo lugar, a 5 a 25 metros uma da outra, e no mapa os pontos se sobrepõem. Há erros claros: a USF Água Vermelha, que fica no distrito, aparece dentro da cidade. A geolocalização da fonte é imprecisa.
+A rede de atenção primária tem dois modelos:
 
-**Como se liga ao trabalho.** Por causa disso, o DW não depende das coordenadas: a dimensão estabelecimento guarda o código CNES, o tipo de unidade e o bairro, e é por eles que se agrega. Isso também mostra uma atitude que vale a pena dizer em voz alta: olhar a qualidade da fonte antes de confiar nela.
+- **USF (Unidade de Saúde da Família):** 23 unidades, cada uma com uma **eSF** (equipe de Saúde da Família: médico, enfermeiro, técnico de enfermagem e agentes comunitários). Cada eSF cuida de um território definido, cadastra as famílias e faz visitas.
+- **UBS tradicional:** 11 unidades, cada uma com uma **eAP** (equipe de Atenção Primária: médico e enfermeiro, sem agentes comunitários). Atende quem procura a unidade.
+- **2 unidades** não têm nem eSF nem eAP em dez/2024: a eMulti Antenor Garcia (equipe multiprofissional) e a UBS Faga.
+
+Os números são das equipes ativas em dezembro de 2024 no `fato_equipe`, ligadas à `dim_estabelecimento` pelo código CNES.
+
+**Como se liga ao trabalho.** Esse slide prepara a Consulta 5: a cobertura “só eSF” conta as 23 USF, e a cobertura “eSF + eAP” soma também as 11 UBS tradicionais. Também é um exemplo de olhar a qualidade da fonte: a API de Dados Abertos do CNES traz coordenadas, mas quase metade das unidades aparece no centro da cidade, inclusive as dos bairros do sul e dos distritos. Por isso não usamos mapa de unidades: o DW agrega por código CNES, tipo de unidade e bairro, não por coordenada.
 
 **Fala de exemplo**
 
-> “O nosso recorte é São Carlos: são 254.857 habitantes pelo Censo 2022, número que a gente conferiu direto na API do IBGE. Ele vai ser o denominador das taxas lá no final. E a cidade tem 36 unidades básicas cadastradas. Uma curiosidade: esses pontos no mapa vêm das coordenadas da API do Ministério, e várias são repetidas, dá pra ver o amontoado ali. Então a gente decidiu não depender delas: o DW agrega por código do estabelecimento e por bairro.”
+> “O nosso recorte é São Carlos: são 254.857 habitantes pelo Censo 2022, número que a gente conferiu direto na API do IBGE. A rede de atenção primária tem 36 unidades, e cada quadradinho aqui é uma. As cheias são as 23 USF, as unidades de Saúde da Família, cada uma com uma equipe de Saúde da Família, que tem território e agente comunitário. As vazadas são as 11 UBS tradicionais, com uma equipe de Atenção Primária, mais enxuta. E duas não têm nenhuma das duas. Essa divisão vai aparecer de novo lá na consulta 5, na cobertura. A gente pensou em pôr as unidades num mapa, mas as coordenadas da API do Ministério jogam quase metade delas no centro da cidade, então preferiu não usar.”
 
 ## Slide 5 · A pergunta central
 

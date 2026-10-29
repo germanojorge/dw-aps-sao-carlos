@@ -186,42 +186,43 @@ def q4():
 # ===================================================================== Q5 drill-across (painéis empilhados, eixo x comum)
 def q5():
     rows = DADOS["q5"]
-    W, LBL, PH, GAP = 1680, 360, 150, 46
+    W, LBL, PH, GAP = 1680, 360, 240, 56
+    pct = lambda v: fmt(v, 1) + "%"
+    # cada painel: (título, subtítulo, séries [(campo, rótulo)], formato); várias séries dividem o mesmo eixo
     paineis = [
-        ("cobertura", "cobertura eSF", "fato_equipe · COUNT", lambda v: fmt(v, 1) + "%"),
-        ("producao_aps", "produção APS", "fato_producao · Σ (SIA)", fmt_compacto),
-        ("taxa", "ICSAP / 10 mil hab.", "fato_internacao · Σ ICSAP", lambda v: fmt(v, 2)),
+        ("cobertura estimada", "fato_equipe · COUNT", [("cobertura_ab", "eSF + eAP"), ("cobertura", "só eSF")], pct),
+        ("ICSAP / 10 mil hab.", "fato_internacao · Σ ICSAP", [("taxa", None)], lambda v: fmt(v, 2)),
     ]
     n = len(rows)
-    xw = W - LBL - 190
+    xw = W - LBL - 300     # espaço à direita para os rótulos das séries
     X = lambda i: LBL + i * xw / (n - 1)
     s, y0 = "", 0
-    for campo, titulo, sub, f in paineis:
-        vals = [r[campo] for r in rows]
+    for titulo, sub, series, f in paineis:
         s += txt(0, y0 + 40, titulo, "ch-pt") + txt(0, y0 + 72, sub, "ch-x")
-        if max(vals) == 0:
-            # as UBS/USF não lançam produção no SIA (vai para o SISAB): mostra o zero e explica, sem inventar linha
-            s += f'<line class="ch-line zero" x1="{LBL}" x2="{LBL + xw}" y1="{y0 + PH}" y2="{y0 + PH}"/>'
-            s += txt(LBL, y0 + PH - 22, "0 em todos os meses: a produção das UBS vai para o SISAB, não para o SIA",
-                     "ch-v")
-            y0 += PH + GAP
-            continue
-        lo, hi = min(vals), max(vals)
-        pad = (hi - lo) * 0.15 or 1
+        todos = [r[c] for c, _ in series for r in rows]
+        lo, hi = min(todos), max(todos)
+        pad = (hi - lo) * 0.2 or 1
         lo, hi = max(0, lo - pad), hi + pad
         Y = lambda v: y0 + PH - (v - lo) / (hi - lo) * PH
         s += f'<line class="ch-grid" x1="{LBL}" x2="{LBL + xw}" y1="{y0 + PH}" y2="{y0 + PH}"/>'
-        pts = " ".join(f"{X(i):.1f},{Y(v):.1f}" for i, v in enumerate(vals))
-        s += f'<polyline class="ch-line" points="{pts}"/>'
-        for i, (r, v) in enumerate(zip(rows, vals)):
-            s += (f'<circle class="ch-dot" cx="{X(i):.1f}" cy="{Y(v):.1f}" r="5">'
-                  f'<title>{escape(f"{r["ano_mes"]}: {f(v)}")}</title></circle>')
-        imin, imax = vals.index(min(vals)), vals.index(max(vals))
-        marcar = {n - 1} if min(vals) == max(vals) else {imin, imax, n - 1}
-        for i in marcar:
-            lado = i == n - 1 or (i == imin and i != imax)     # último e mínimo: rótulo ao lado do ponto
-            s += txt(X(i) + (14 if lado else 0), Y(vals[i]) + (8 if i == imin and i != n - 1 else -14), f(vals[i]), "ch-v",
-                     "start" if lado else "middle")
+        for k, (campo, rotulo) in enumerate(series):
+            vals = [r[campo] for r in rows]
+            alt = " alt" if k else ""
+            pts = " ".join(f"{X(i):.1f},{Y(v):.1f}" for i, v in enumerate(vals))
+            s += f'<polyline class="ch-line{alt}" points="{pts}"/>'
+            for i, (r, v) in enumerate(zip(rows, vals)):
+                s += (f'<circle class="ch-dot{alt}" cx="{X(i):.1f}" cy="{Y(v):.1f}" r="5">'
+                      f'<title>{escape(f"{r["ano_mes"]}: {f(v)}")}</title></circle>')
+            if rotulo:
+                # série com nome: só o último valor, com o rótulo ao lado
+                s += txt(X(n - 1) + 14, Y(vals[-1]) + 8, f"{f(vals[-1])} {rotulo}", "ch-v")
+                continue
+            imin, imax = vals.index(min(vals)), vals.index(max(vals))
+            marcar = {n - 1} if min(vals) == max(vals) else {imin, imax, n - 1}
+            for i in marcar:
+                lado = i == n - 1 or (i == imin and i != imax)     # último e mínimo: rótulo ao lado do ponto
+                s += txt(X(i) + (14 if lado else 0), Y(vals[i]) + (8 if i == imin and i != n - 1 else -14), f(vals[i]), "ch-v",
+                         "start" if lado else "middle")
         y0 += PH + GAP
     for i, r in enumerate(rows):
         m = int(str(r["ano_mes"])[4:])
@@ -231,4 +232,27 @@ def q5():
           f'transform="rotate(90 {W - 24} {y0 / 2})">⋈ ano_mes</text>')
     return f'<svg class="graf q5g" viewBox="0 0 {W} {y0}">{s}</svg>'
 
-MARCADORES = {"Q1": q1, "Q2": q2, "Q3": q3, "Q4": q4, "Q5": q5}
+# ===================================================================== slide 4: rede de atenção primária (1 quadrado = 1 unidade)
+def rede():
+    rows = DADOS["rede"]
+    COLS, C, G = 6, 92, 16
+    LEG = [("usf", "USF", "uma equipe de Saúde da Família (eSF) cada"),
+           ("ubs", "UBS tradicionais", "uma equipe de Atenção Primária (eAP) cada"),
+           ("sem", "sem eSF nem eAP", "")]
+    s = ""
+    for i, r in enumerate(rows):
+        x, y = (i % COLS) * (C + G), (i // COLS) * (C + G)
+        s += (f'<rect class="rd {r["modelo"]}" x="{x}" y="{y}" width="{C}" height="{C}" rx="6" style="--i:{i}">'
+              f'<title>{escape(r["nome"])}</title></rect>')
+    lx, ly = COLS * (C + G) + 70, 40
+    for k, (m, nome, desc) in enumerate(LEG):
+        n = sum(r["modelo"] == m for r in rows)
+        y = ly + k * 210
+        s += f'<rect class="rd {m} leg" x="{lx}" y="{y}" width="44" height="44" rx="4"/>'
+        s += txt(lx + 70, y + 40, f"{n} {nome}", "ch-pt")
+        if desc:
+            s += txt(lx + 70, y + 84, desc, "ch-x")
+    W, H = lx + 560, (len(rows) + COLS - 1) // COLS * (C + G) - G
+    return f'<svg class="graf rede" viewBox="0 0 {W} {H}">{s}</svg>'
+
+MARCADORES = {"Q1": q1, "Q2": q2, "Q3": q3, "Q4": q4, "Q5": q5, "REDE": rede}

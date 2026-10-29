@@ -883,7 +883,9 @@
   {
    "ano_mes": 202301,
    "equipes_sf": 23,
+   "equipes_ap": 13,
    "cobertura": 31.1,
+   "cobertura_ab": 48.7,
    "producao_aps": 0,
    "icsap": 210,
    "taxa": 8.24
@@ -891,7 +893,9 @@
   {
    "ano_mes": 202302,
    "equipes_sf": 23,
+   "equipes_ap": 13,
    "cobertura": 31.1,
+   "cobertura_ab": 48.7,
    "producao_aps": 0,
    "icsap": 172,
    "taxa": 6.75
@@ -899,7 +903,9 @@
   {
    "ano_mes": 202303,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 218,
    "taxa": 8.55
@@ -907,7 +913,9 @@
   {
    "ano_mes": 202304,
    "equipes_sf": 23,
+   "equipes_ap": 13,
    "cobertura": 31.1,
+   "cobertura_ab": 48.7,
    "producao_aps": 0,
    "icsap": 236,
    "taxa": 9.26
@@ -915,7 +923,9 @@
   {
    "ano_mes": 202305,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 261,
    "taxa": 10.24
@@ -923,7 +933,9 @@
   {
    "ano_mes": 202306,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 231,
    "taxa": 9.06
@@ -931,7 +943,9 @@
   {
    "ano_mes": 202307,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 221,
    "taxa": 8.67
@@ -939,7 +953,9 @@
   {
    "ano_mes": 202308,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 207,
    "taxa": 8.12
@@ -947,7 +963,9 @@
   {
    "ano_mes": 202309,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 245,
    "taxa": 9.61
@@ -955,7 +973,9 @@
   {
    "ano_mes": 202310,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 206,
    "taxa": 8.08
@@ -963,7 +983,9 @@
   {
    "ano_mes": 202311,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 202,
    "taxa": 7.93
@@ -971,7 +993,9 @@
   {
    "ano_mes": 202312,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 291,
    "taxa": 11.42
@@ -979,7 +1003,9 @@
   {
    "ano_mes": 202401,
    "equipes_sf": 23,
+   "equipes_ap": 12,
    "cobertura": 31.1,
+   "cobertura_ab": 47.4,
    "producao_aps": 0,
    "icsap": 167,
    "taxa": 6.55
@@ -987,7 +1013,9 @@
   {
    "ano_mes": 202402,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 200,
    "taxa": 7.85
@@ -995,7 +1023,9 @@
   {
    "ano_mes": 202403,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 205,
    "taxa": 8.04
@@ -1003,7 +1033,9 @@
   {
    "ano_mes": 202404,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 241,
    "taxa": 9.46
@@ -1011,7 +1043,9 @@
   {
    "ano_mes": 202405,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 209,
    "taxa": 8.2
@@ -1019,7 +1053,9 @@
   {
    "ano_mes": 202406,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 202,
    "taxa": 7.93
@@ -1027,7 +1063,9 @@
   {
    "ano_mes": 202407,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 210,
    "taxa": 8.24
@@ -1035,7 +1073,9 @@
   {
    "ano_mes": 202408,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 228,
    "taxa": 8.95
@@ -1043,7 +1083,9 @@
   {
    "ano_mes": 202409,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 221,
    "taxa": 8.67
@@ -1051,7 +1093,9 @@
   {
    "ano_mes": 202410,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 241,
    "taxa": 9.46
@@ -1059,7 +1103,9 @@
   {
    "ano_mes": 202411,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 217,
    "taxa": 8.51
@@ -1067,10 +1113,266 @@
   {
    "ano_mes": 202412,
    "equipes_sf": 23,
+   "equipes_ap": 11,
    "cobertura": 31.1,
+   "cobertura_ab": 46.0,
    "producao_aps": 0,
    "icsap": 214,
    "taxa": 8.4
+  }
+ ],
+ "rede": [
+  {
+   "cnes": "2028875",
+   "nome": "USF AGUA VERMELHA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2063123",
+   "nome": "USF ANTENOR GARCIA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "9437800",
+   "nome": "USF ARNON DE MELLO",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "6593135",
+   "nome": "USF ASTOLPHO LUIZ DO PRADO",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "0407011",
+   "nome": "USF CDHU",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "5544157",
+   "nome": "USF CIDADE ARACY EQUIPE I",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "5931606",
+   "nome": "USF CIDADE ARACY EQUIPE II",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "7961553",
+   "nome": "USF ITAMARATI",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "6022197",
+   "nome": "USF JARDIM CRUZEIRO DO SUL EQUIPE II",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "5974739",
+   "nome": "USF JARDIM CRUZEIRO DO SUL EQUIPE VILA CONCEICAO EQUIPE I",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "5467195",
+   "nome": "USF JARDIM GUANABARA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2028514",
+   "nome": "USF JARDIM MUNIQUE",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "3034399",
+   "nome": "USF JARDIM SAO CARLOS",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "9113363",
+   "nome": "USF JARDIM SAO RAFAEL",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2083558",
+   "nome": "USF JOQUEI CLUBE",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "6847919",
+   "nome": "USF JOSE FERNANDO PETRILLI FILHO",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2028522",
+   "nome": "USF PRESIDENTE COLLOR",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2041286",
+   "nome": "USF ROMEU TORTORELLI",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "3983617",
+   "nome": "USF SANTA ANGELINA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2046970",
+   "nome": "USF SANTA EUDOXIA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "9057919",
+   "nome": "USF SAO CARLOS VIII",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "3738019",
+   "nome": "USF ZAVAGLIA",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "9598405",
+   "nome": "USF ZIGOMAR",
+   "esf": 1,
+   "eap": 0,
+   "modelo": "usf"
+  },
+  {
+   "cnes": "2040360",
+   "nome": "UBS AZULVILLE PS DR ROMEU DE CRESCI",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "3155773",
+   "nome": "UBS BOTAFOGO VALERIA DE CASSIA IBELLI",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2040778",
+   "nome": "UBS CIDADE ARACY ERNESTO PEREIRA LOPES",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2057638",
+   "nome": "UBS CRUZEIRO DO SUL PS DR DANTE ERBOLATO",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2033992",
+   "nome": "UBS DELTA PS DR LUIZ MAIA",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2041278",
+   "nome": "UBS REDENCAO PS DR LAURO CORSI",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2039427",
+   "nome": "UBS SANTA FELICIA PS DR BENJAMIM LOPEZ OZORES",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2046660",
+   "nome": "UBS SANTA PAULA PS DR ARSENIO AGNESINE",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2040921",
+   "nome": "UBS SAO JOSE PS DR LUIZ VALENTIE DE OLIVEIRA",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "3034410",
+   "nome": "UBS VILA ISABEL ROSANA CECATO LAHR",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "2039443",
+   "nome": "UBS VILA NERY PS DR WILSON POZZI",
+   "esf": 0,
+   "eap": 1,
+   "modelo": "ubs"
+  },
+  {
+   "cnes": "6375693",
+   "nome": "EMULTI ANTENOR GARCIA",
+   "esf": 0,
+   "eap": 0,
+   "modelo": "sem"
+  },
+  {
+   "cnes": "2039435",
+   "nome": "UBS FAGA PS DR VIRIATO FERNANDES NUNES",
+   "esf": 0,
+   "eap": 0,
+   "modelo": "sem"
   }
  ],
  "apoio": {

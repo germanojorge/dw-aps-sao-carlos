@@ -1,10 +1,10 @@
 # Parte 3: Constelação e integração
 
-Slides 13 a 18 · cerca de 5 minutos
+Slides 12 a 17 · cerca de 5 minutos
 
 A parte 3 explica como as três estrelas viram um DW só e por que isso permite a pergunta central. É também onde aparecem as decisões técnicas que a professora mais costuma cobrar: dimensões conformes, integração, hierarquias e os aspectos de modelagem.
 
-## Slide 13 · Abertura: constelação e integração
+## Slide 12 · Abertura: constelação e integração
 
 **O que o slide mostra.** O divisor da parte 3.
 
@@ -14,7 +14,7 @@ A parte 3 explica como as três estrelas viram um DW só e por que isso permite 
 
 > “Na parte anterior a gente viu três estrelas separadas. Agora eu vou mostrar como elas viram uma coisa só, e o que a gente teve que fazer com os dados pra isso funcionar.”
 
-## Slide 14 · Constelação de fatos
+## Slide 13 · Constelação de fatos
 
 **O que o slide mostra.** Os três fatos (em azul) ligados às dimensões; as dimensões com borda grossa são compartilhadas. Embaixo, os quatro passos do projeto.
 
@@ -33,7 +33,7 @@ O passo 3 é o coração: uma **dimensão conforme** é aquela que significa exa
 
 > “Isso aqui é a constelação de fatos: os três fatos, em azul, apontando pras mesmas dimensões. A gente chegou nela em quatro passos: modelou cada estrela separada, viu quais dimensões se repetiam, conformou essas dimensões e aí ligou tudo. Conformar é a parte importante: quer dizer que, por exemplo, o tempo é exatamente a mesma tabela, com a mesma chave e o mesmo significado, nos três fatos. Por isso a gente fixou o tempo no mês, que é o menor nível que as três fontes têm em comum. As dimensões com borda grossa são as compartilhadas.”
 
-## Slide 15 · Quem usa o quê
+## Slide 14 · Quem usa o quê
 
 **O que o slide mostra.** Uma matriz com as dimensões nas linhas e os fatos nas colunas; as cinco primeiras linhas (destacadas) são as dimensões conformes.
 
@@ -59,7 +59,7 @@ Lendo pelas linhas: uma dimensão que aparece em mais de um fato precisa ser con
 
 > “A mesma coisa em forma de matriz, que é a matriz de barramento: nas linhas as dimensões, nas colunas os fatos. As cinco de cima aparecem em mais de um fato, então são as conformes. E repara que só tempo e estabelecimento aparecem nos três. Isso é importante: é por elas que dá pra comparar equipes, atendimentos e internações na mesma análise, que é o que a consulta 5, o drill-across, vai fazer.”
 
-## Slide 16 · Mesmo dado, códigos diferentes
+## Slide 15 · Mesmo dado, códigos diferentes
 
 **O que o slide mostra.** Cinco dados que chegam com representações diferentes de duas fontes, e a representação escolhida no DW.
 
@@ -81,7 +81,7 @@ O exemplo da idade mostra por que não dá para usar o campo direto: no SIH, “
 
 > “Mas pra conformar as dimensões, os dados têm que falar a mesma língua, e eles não falam. O sexo, por exemplo: no SIH é 1 e 3, no SIA é M e F. No DW fica M, F e I de ignorado. A idade é pior: o SIH manda um número mais uma unidade, então 7 meses vem como ‘7 meses’, e o SIA manda 0 anos. Os dois viram a faixa de 0 a 4 anos, criança. Município tem 6 dígitos no DATASUS e 7 no IBGE, o CNES às vezes perde o zero da frente, e a competência vem separada no SIH. E funcionou: com os dados reais, todas as chaves foram resolvidas.”
 
-## Slide 17 · Hierarquias (≤)
+## Slide 16 · Hierarquias (≤)
 
 **O que o slide mostra.** Três hierarquias: tempo, diagnóstico (duas) e procedimento (no próprio código SIGTAP).
 
@@ -97,7 +97,7 @@ O exemplo da idade mostra por que não dá para usar o campo direto: no SIH, “
 
 > “As dimensões têm hierarquias, e a gente usa a notação com o menor ou igual: A ≤ B quer dizer que A é mais detalhado e cada A cabe em um único B. No tempo é o óbvio: mês, trimestre, semestre, ano. O diagnóstico é o mais interessante, porque tem duas: a da CID, que vai do código até o capítulo, e a das ICSAP, que vai do código até o grupo e até ‘é ICSAP ou não’. E no procedimento a hierarquia tá dentro do próprio código do SIGTAP: os dois primeiros dígitos são o grupo, os quatro o subgrupo, e assim vai. É por esses trilhos que o roll-up e o drill-down andam.”
 
-## Slide 18 · Decisões de modelagem
+## Slide 17 · Decisões de modelagem
 
 **O que o slide mostra.** Seis cartões com as decisões de modelagem do DW.
 

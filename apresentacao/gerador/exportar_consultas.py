@@ -66,10 +66,11 @@ q4 = q(f"""SELECT d.grupo_icsap AS causa, pp.ciclo_vida AS ciclo, SUM(f.qtd_inte
 # ---------- Q5 drill-across: cada fato agregado por mês e depois juntado por ano_mes
 q5 = q(f"""
 WITH oferta AS (
-    SELECT f.sk_tempo, COUNT(*) AS equipes_sf
+    SELECT f.sk_tempo, COUNT(*) FILTER (te.categoria_equipe = 'Saúde da Família') AS equipes_sf,
+           COUNT(*) FILTER (te.categoria_equipe = 'Atenção Primária') AS equipes_ap
     FROM fato_equipe f JOIN dim_tipo_equipe te USING (sk_tipo_equipe)
     JOIN dim_estabelecimento e USING (sk_estabelecimento)
-    WHERE te.categoria_equipe = 'Saúde da Família' AND e.cod_municipio = '{MUN}' GROUP BY 1),
+    WHERE e.cod_municipio = '{MUN}' GROUP BY 1),
 producao AS (
     SELECT f.sk_tempo, SUM(f.qtd_aprovada) AS producao_aps
     FROM fato_producao_ambulatorial f JOIN dim_estabelecimento e USING (sk_estabelecimento)
@@ -79,13 +80,30 @@ icsap AS (
     FROM fato_internacao f {ICSAP} {RES} WHERE d.icsap = 'Sim' GROUP BY 1)
 SELECT t.ano_mes,
        COALESCE(o.equipes_sf, 0)::INT AS equipes_sf,
+       COALESCE(o.equipes_ap, 0)::INT AS equipes_ap,
        ROUND(LEAST(100, 100.0 * COALESCE(o.equipes_sf, 0) * 3450 / {POP}), 1)::DOUBLE AS cobertura,
+       -- teto: cada eAP contada como uma equipe inteira (o DW não tem a carga horária para converter)
+       ROUND(LEAST(100, 100.0 * (COALESCE(o.equipes_sf, 0) + COALESCE(o.equipes_ap, 0)) * 3450 / {POP}), 1)::DOUBLE AS cobertura_ab,
        COALESCE(p.producao_aps, 0)::BIGINT AS producao_aps,
        COALESCE(i.internacoes_icsap, 0)::INT AS icsap,
        ROUND(10000.0 * COALESCE(i.internacoes_icsap, 0) / {POP}, 2)::DOUBLE AS taxa
 FROM dim_tempo t LEFT JOIN oferta o USING (sk_tempo) LEFT JOIN producao p USING (sk_tempo)
 LEFT JOIN icsap i USING (sk_tempo)
 WHERE t.sk_tempo > 0 ORDER BY 1""")
+
+# ---------- slide 4: unidades de atenção primária por modelo de equipe (último mês do período)
+rede = q(f"""
+WITH eq AS (
+    SELECT f.sk_estabelecimento,
+           COUNT(*) FILTER (te.categoria_equipe = 'Saúde da Família') AS esf,
+           COUNT(*) FILTER (te.categoria_equipe = 'Atenção Primária') AS eap
+    FROM fato_equipe f JOIN dim_tipo_equipe te USING (sk_tipo_equipe)
+    WHERE f.sk_tempo = (SELECT MAX(sk_tempo) FROM dim_tempo) GROUP BY 1)
+SELECT e.cnes, e.nome, COALESCE(eq.esf, 0)::INT AS esf, COALESCE(eq.eap, 0)::INT AS eap,
+       CASE WHEN eq.esf > 0 THEN 'usf' WHEN eq.eap > 0 THEN 'ubs' ELSE 'sem' END AS modelo
+FROM dim_estabelecimento e LEFT JOIN eq USING (sk_estabelecimento)
+WHERE e.nivel_atencao = 'Atenção Primária' AND e.cod_municipio = '{MUN}'
+ORDER BY CASE modelo WHEN 'usf' THEN 1 WHEN 'ubs' THEN 2 ELSE 3 END, e.nome""")
 
 # ---------- números de apoio (conferência)
 apoio = q(f"""SELECT
@@ -94,6 +112,6 @@ apoio = q(f"""SELECT
 
 saida = {"q1": {"mes": q1_mes, "tri": q1_tri, "ano": q1_ano},
          "q2": {"grupo": q2_grupo, "sub": q2_sub, "proc": q2_proc, "grupo_escolhido": g, "sub_escolhido": sg},
-         "q3": q3, "q4": q4, "q5": q5, "apoio": apoio}
+         "q3": q3, "q4": q4, "q5": q5, "rede": rede, "apoio": apoio}
 (AQUI / "dados" / "consultas.json").write_text(json.dumps(saida, ensure_ascii=False, indent=1, default=str))
 print("ok:", {k: (len(v) if isinstance(v, list) else "…") for k, v in saida.items()}, apoio)

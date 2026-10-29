@@ -11,10 +11,10 @@ Arquivos de entrada:
     tema_cobalto.css     cores, fontes e decoração do estilo "boletim cobalto"
     deck.js              navegação, escala 16:9, notas (tecla N) e edição inline (tecla E)
     icones/*.svg         ícones Lucide (licença ISC)
-    dados/               contorno de São Carlos (API de malhas do IBGE) e UBS (API de Dados Abertos do CNES)
+    dados/               contorno de São Carlos (API de malhas do IBGE) e resultados das consultas (consultas.json)
 
 Marcadores aceitos em slides.html:
-    {{ICON:nome}}  {{MAPA}}  {{MAPA_ZOOM}}  {{ESTRELA:fato}}  {{CONSTELACAO}}  {{CUBO}}  {{GLITCH}}  {{Q1}}…{{Q5}} (graficos.py)
+    {{ICON:nome}}  {{MAPA}}  {{ESTRELA:fato}}  {{CONSTELACAO}}  {{CUBO}}  {{GLITCH}}  {{Q1}}…{{Q5}}  {{REDE}} (graficos.py)
 """
 import json, math, re
 from pathlib import Path
@@ -44,23 +44,10 @@ def proj(lon, lat):
     return ((lon * math.cos(LAT0) - MINX) * ESC, (-lat - MINY) * ESC)
 
 PATH_SC = "M" + " L".join(f"{x:.1f},{y:.1f}" for x, y in (proj(lon, lat) for lon, lat in anel)) + "Z"
-ubs = json.loads((AQUI / "dados" / "ubs_api_cnes.json").read_text())
-pts = [proj(u["lon"], u["lat"]) for u in ubs if u["lat"] and u["lon"]]
-
-# recorte da área urbana (onde está a maioria das unidades)
-ZX0, ZY0 = proj(-47.935, -21.975)
-ZX1, ZY1 = proj(-47.845, -22.075)
-
+# só o contorno oficial: as coordenadas das UBS na API do CNES são imprecisas (quase metade cai no centro)
 def mapa():
-    dots = "".join(f'<circle class="ubs" cx="{x:.1f}" cy="{y:.1f}" r="11" style="--i:{i}"/>' for i, (x, y) in enumerate(pts))
-    return (f'<svg class="mapa" viewBox="0 0 1000 {ALT:.0f}"><path class="mun" d="{PATH_SC}"/>'
-            f'<rect class="zoombox" x="{ZX0:.0f}" y="{ZY0:.0f}" width="{ZX1-ZX0:.0f}" height="{ZY1-ZY0:.0f}"/>{dots}</svg>')
+    return f'<svg class="mapa" viewBox="0 0 1000 {ALT:.0f}"><path class="mun" d="{PATH_SC}"/></svg>'
 
-def mapa_zoom():
-    w, h = ZX1 - ZX0, ZY1 - ZY0
-    dots = "".join(f'<circle class="ubs" cx="{x:.1f}" cy="{y:.1f}" r="{w/110:.1f}" style="--i:{i}"/>' for i, (x, y) in enumerate(pts))
-    return (f'<svg class="mapa-zoom" viewBox="{ZX0:.1f} {ZY0:.1f} {w:.1f} {h:.1f}" preserveAspectRatio="xMidYMid slice">'
-            f'<path class="mun" d="{PATH_SC}"/>{dots}</svg>')
 
 # ---------------------------------------------------------------- esquemas estrela
 DIMS = {
@@ -190,7 +177,7 @@ def glitch():
 
 # ---------------------------------------------------------------- montagem
 import graficos
-MARCADORES = {**graficos.MARCADORES, "MAPA": mapa, "MAPA_ZOOM": mapa_zoom, "CONSTELACAO": constelacao, "CUBO": cubo, "GLITCH": glitch}
+MARCADORES = {**graficos.MARCADORES, "MAPA": mapa, "CONSTELACAO": constelacao, "CUBO": cubo, "GLITCH": glitch}
 
 def expandir(html):
     def sub(m):

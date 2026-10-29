@@ -46,16 +46,10 @@
 .byline { font: 400 21px var(--fm); letter-spacing: .08em; color: var(--mute); text-transform: uppercase; }
 
 /* === MAPA === */
-.mapa, .mapa-zoom { width: 100%; height: 100%; display: block; overflow: visible; }
+.mapa { width: 100%; height: 100%; display: block; overflow: visible; }
 .mun { fill: var(--panel); stroke: var(--acc); stroke-width: 4; stroke-linejoin: round;
   stroke-dasharray: 6000; stroke-dashoffset: 6000; transition: stroke-dashoffset 2.4s cubic-bezier(.6, .1, .2, 1) .2s; }
 .slide.visible .mun { stroke-dashoffset: 0; }
-.mapa-zoom .mun { stroke-width: 1; }
-.ubs { fill: var(--hit-bg); stroke: var(--bg); stroke-width: 2; opacity: 0; transition: opacity .3s; transition-delay: calc(1.4s + var(--i) * 35ms); }
-.mapa-zoom .ubs { stroke-width: .4; fill-opacity: .8; }
-.slide.visible .ubs { opacity: 1; }
-.zoombox { fill: none; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 10 8; display: none; }
-.s-mapa .zoombox { display: block; }
 
 /* === 01 CAPA / 26 FIM === */
 .capa-txt, .fim-txt { left: 120px; top: 210px; width: 1080px; display: flex; flex-direction: column; gap: 34px; }
@@ -101,9 +95,6 @@
 .s-fluxo .tags { left: 120px; right: 120px; top: 880px; }
 
 /* === 04 MAPA DE SÃO CARLOS === */
-.mapa-big { left: 150px; top: 120px; height: 860px; width: 527px; }
-.mapa-zoomwrap { left: 800px; top: 250px; width: 480px; height: 560px; border: 1.5px solid var(--faint); border-radius: var(--radius); overflow: hidden; background: var(--panel); }
-.mapa-zoomwrap .cap { position: absolute; left: 20px; bottom: 16px; font: 400 18px var(--fm); text-transform: uppercase; letter-spacing: .1em; color: var(--mute); }
 .stats { left: 1360px; top: 250px; width: 460px; display: flex; flex-direction: column; gap: 60px; }
 .stat { display: flex; flex-direction: column; gap: 10px; }
 .stat .num { font: var(--fdw) 112px/0.9 var(--fd); letter-spacing: var(--fdls); color: var(--acc); }
@@ -177,23 +168,15 @@
 .callouts { left: 120px; right: 120px; bottom: 112px; display: flex; flex-wrap: wrap; gap: 14px; }
 .co { font: 400 23px var(--fm); padding: 10px 20px; border: 1.5px solid var(--acc); border-radius: var(--pill); color: var(--ink); background: var(--bg); }
 
-/* === 10 SEMIADITIVO === */
-.semi { left: 120px; right: 120px; top: 290px; height: 470px; display: grid; grid-template-columns: 400px 90px 400px 1fr; gap: 30px; align-items: center; }
-.mes { height: 100%; border: 1.5px solid var(--faint); border-radius: var(--radius); background: var(--panel);
-  display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 36px; }
-.m-l { font: 400 26px var(--fm); text-transform: uppercase; letter-spacing: .12em; color: var(--mute); }
-.eqs { display: flex; gap: 20px; color: var(--acc); }
-.eqs .ic { width: 84px; height: 84px; }
-.m-c { font: var(--fdw) 110px/1 var(--fd); letter-spacing: var(--fdls); }
-.mais { font: 400 80px var(--fm); text-align: center; color: var(--mute); }
-.res { display: flex; flex-direction: column; gap: 30px; padding-left: 40px; }
-.res .r { display: grid; grid-template-columns: 140px 1fr; align-items: center; gap: 24px; }
-.res b { font: var(--fdw) 120px/1 var(--fd); letter-spacing: var(--fdls); }
-.res span { font-size: 28px; line-height: 1.3; }
-.res .bad b { text-decoration: line-through; text-decoration-thickness: 6px; opacity: .45; }
-.res .bad span { opacity: .6; }
-.res .good b { color: var(--acc); }
-.s-semi .tags { left: 120px; top: 840px; }
+/* === 04 REDE DE ATENÇÃO PRIMÁRIA === */
+.rede-wrap { left: 120px; top: 290px; width: 1160px; }
+.rede { width: 100%; height: auto; overflow: visible; }
+.rd { stroke-width: 4; opacity: 0; transition: opacity .3s; transition-delay: calc(.6s + var(--i, 0) * 30ms); }
+.slide.visible .rd { opacity: 1; }
+.rd.usf { fill: var(--acc); stroke: var(--acc); }
+.rd.ubs { fill: var(--panel); stroke: var(--acc); }
+.rd.sem { fill: none; stroke: var(--mute); stroke-dasharray: 10 8; }
+.rd.leg { transition-delay: .4s; }
 
 /* === 14 CONSTELAÇÃO === */
 .passos { left: 120px; bottom: 112px; display: flex; gap: 14px; }
@@ -393,6 +376,7 @@ body.editing [contenteditable] { outline: 2px dashed var(--acc); outline-offset:
 .ch-line { fill: none; stroke: var(--acc); stroke-width: 3; stroke-linejoin: round; }
 .ch-dot { fill: var(--acc); stroke: var(--bg); stroke-width: 2; }
 .ch-dot:hover, .ch-bar:hover, .ch-cell:hover { filter: brightness(1.15); }
+.ch-line.alt, .ch-dot.alt { opacity: .45; }
 .ch-cell { fill: var(--acc); }
 .ch-cv { font-size: 22px; fill: var(--ink); }
 .ch-cv.inv { fill: var(--hit-fg); }

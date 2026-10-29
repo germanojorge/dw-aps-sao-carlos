@@ -60,7 +60,7 @@ Os detalhes de cada parte estão no [`CLAUDE.md`](CLAUDE.md).
 Todo o texto dos slides está em um arquivo só: [`apresentacao/gerador/slides.html`](apresentacao/gerador/slides.html).
 
 1. Abra o arquivo no GitHub e clique no lápis (**Edit this file**).
-2. Ache o slide pelo comentário que o abre, por exemplo `<!-- 20 · Q1 ROLL-UP -->`, e mude o texto.
+2. Ache o slide pelo comentário que o abre, por exemplo `<!-- 19 · Q1 ROLL-UP -->`, e mude o texto.
    - O que aparece na tela fica entre as tags (`<h2>…</h2>`, `<span>…</span>`).
    - As notas do apresentador ficam no atributo `data-notes="…"` de cada slide (tecla **N** mostra na apresentação).
    - Não apague as tags nem os marcadores entre chaves duplas, como `{{Q1}}` ou `{{ICON:users}}`: eles viram gráficos e ícones.
