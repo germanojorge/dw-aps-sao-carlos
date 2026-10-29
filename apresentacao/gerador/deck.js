@@ -2,7 +2,7 @@
    PARTES DA APRESENTAÇÃO e integrantes (os nomes só aparecem na capa)
    =========================================================== */
 const PARTES = [
-  { titulo: 'Problema e fontes',        pessoa: 'Ivan Medina' },
+  { titulo: 'Problema e fontes',        pessoa: 'Ivan Sardon' },
   { titulo: 'Processos e estrelas',     pessoa: 'Vinícius Morotti' },
   { titulo: 'Constelação e integração', pessoa: 'Germano Jorge' },
   { titulo: 'Consultas OLAP',           pessoa: 'Matheus Rodrigues' },
